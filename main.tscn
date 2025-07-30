@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bck3arfwa6qbj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7dm0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_texture = SubResource("PlaceholderTexture2D_7dm0k")
+uv1_scale = Vector3(17.785, 17.785, 17.785)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
+material = SubResource("StandardMaterial3D_ig7tw")
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0.52, 0.3874, 0.078, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_h2yge"]
+inner_radius = 1.493
+outer_radius = 1.015
+rings = 6
+ring_segments = 4
+
+[sub_resource type="Environment" id="Environment_7dm0k"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136226, 0)
+material_override = SubResource("StandardMaterial3D_0xm2m")
+mesh = SubResource("TorusMesh_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.794446, 0.607334, 0, -0.607334, 0.794446, 0, 2.07503, 3.08038)
+fov = 41.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7dm0k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.637612, 0.512371, -0.575263, -0.233005, 0.840039, 0.489941, 0.734275, -0.178354, 0.655004, 0, 1.36349, 0)
