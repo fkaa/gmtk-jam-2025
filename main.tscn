@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bck3arfwa6qbj"]
+[gd_scene load_steps=11 format=3 uid="uid://bck3arfwa6qbj"]
 
 [ext_resource type="Script" uid="uid://bu70mjtwa06ye" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ciupyea3iqa2w" path="res://scenes/conveyor_belt/conveyor_belt.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://b1rn0msbqxrki" path="res://scenes/player/player.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ctyp3cdvy7oeo" path="res://scenes/HUD.tscn" id="5_lquwl"]
 
 [sub_resource type="Environment" id="Environment_7dm0k"]
 background_mode = 1
@@ -47,6 +48,11 @@ shadow_enabled = true
 transform = Transform3D(0.363723, 0, -0.931507, 0, 1, 0, 0.931507, 0, 0.363723, -1.51332, -1.19209e-07, 0.119994)
 move_speed = 5.0
 
+[node name="wash_timer" type="Timer" parent="Player"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_h2yge")
 
@@ -61,3 +67,5 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_1bvp3")
+
+[node name="Hud" parent="." instance=ExtResource("5_lquwl")]
