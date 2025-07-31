@@ -1,8 +1,6 @@
 extends CharacterBody3D
 class_name Player
 
-const DIRTY_PLATE = preload("res://scenes/conveyor_belt/plate_items/dirty_plate.tscn")
-
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var plate_hold_position: Marker3D = $PlateHoldPosition
 
@@ -15,9 +13,7 @@ var action: String
 var _held_items: Array[Node3D] = []
 
 func _ready() -> void:
-	_hold_item(DIRTY_PLATE.instantiate())
-	_hold_item(DIRTY_PLATE.instantiate())
-	_hold_item(DIRTY_PLATE.instantiate())
+	pass
 
 func _physics_process(delta: float) -> void:
 	if target_node:
