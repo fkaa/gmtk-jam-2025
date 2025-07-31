@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpi7adbb86jev"]
+[gd_scene load_steps=4 format=3 uid="uid://bpi7adbb86jev"]
 
 [ext_resource type="Texture2D" uid="uid://dja38eo0fd8t3" path="res://assets/cutlery1.png" id="1_d2i3e"]
+[ext_resource type="Script" uid="uid://bt6dpn38yahoj" path="res://scenes/conveyor_belt/plate_items/dirty_cutlery.gd" id="1_ls6ni"]
 [ext_resource type="Texture2D" uid="uid://mce4kmgkhh3u" path="res://assets/filth2.png" id="2_ls6ni"]
 
 [node name="DirtyCutlery" type="Node3D"]
+script = ExtResource("1_ls6ni")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 modulate = Color(0.8, 0.91, 1, 1)
