@@ -19,7 +19,7 @@ rings = 1
 script = ExtResource("1_8afob")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.917649, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.00484172, 0.917649, -0.0580928)
 mesh = SubResource("BoxMesh_x7p2l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -27,9 +27,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.921783, 0)
 shape = SubResource("CapsuleShape3D_x7p2l")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.254757, -0.916996, 0.306948, 0.966941, 0.237912, -0.0917777, 0.0111333, 0.320182, 0.947291, 0.662035, 0.949109, 0.369517)
+transform = Transform3D(-0.0111333, -0.320182, -0.947291, 0.966941, 0.237912, -0.0917777, 0.254757, -0.916996, 0.306948, -0.374358, 0.949109, 0.603943)
 mesh = SubResource("CapsuleMesh_x7p2l")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.254757, -0.865459, -0.431369, 0.966941, 0.233126, 0.103332, 0.0111333, -0.443433, 0.896238, 0.734593, 0.938746, -0.390765)
+transform = Transform3D(-0.0111333, 0.443433, -0.896238, 0.966941, 0.233126, 0.103332, 0.254757, -0.865459, -0.431369, 0.385923, 0.938746, 0.6765)
 mesh = SubResource("CapsuleMesh_x7p2l")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 0.1
+
+[node name="PlateHoldPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.937499, 1.10731)
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_finished"]

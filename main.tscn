@@ -1,8 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bck3arfwa6qbj"]
+[gd_scene load_steps=10 format=3 uid="uid://bck3arfwa6qbj"]
 
+[ext_resource type="Script" uid="uid://bu70mjtwa06ye" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ciupyea3iqa2w" path="res://scenes/conveyor_belt/conveyor_belt.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://b1rn0msbqxrki" path="res://scenes/player/player.tscn" id="3_h2yge"]
+
+[sub_resource type="Environment" id="Environment_7dm0k"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.99558, 0.99558, 0.99558, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_h2yge"]
+vertices = PackedVector3Array(-2.25, 0.0129224, -4.5, 0, 0.0129224, -5.25, 0, 0.0129224, -19.5, -19.5, 0.0129224, 0.25, -5, 0.0129224, 0.25, -4.5, 0.0129224, -3, -19.5, 0.0129224, -19.5, 4.25, 0.0129224, -3.5, 5.25, 0.0129224, 0.75, 19.5, 0.0129224, 0.5, 19.5, 0.0129224, -19.5, -1.75, 3.48292, -3.5, -1.5, 3.48292, -2.5, -0.75, 3.48292, -3, 2, 3.48292, -2.5, 3, 3.48292, -0.5, 3, 3.48292, -3, 0.25, 3.48292, -4.25, -2.5, 3.52292, -1.75, -2.75, 3.52292, -2.5, -3.5, 3.52292, -2.5, -4, 3.52292, -0.25, -4, 3.52292, 0.5, -3, 3.52292, 0.75, 0.25, 0.0129224, -2, -1.75, 0.0129224, -1.25, -2, 0.0129224, 0, 2, 0.0129224, 0.5, 1.5, 0.0129224, -1.5, -1, 0.0129224, 1.75, 1, 0.0129224, 1.75, -5, 0.0129224, 1.75, -1.25, 0.0129224, 19.5, -1, 0.0129224, 4.75, -2.5, 0.0129224, 4.75, -3.25, 0.0129224, 4, -19.5, 0.0129224, 19.5, 5.25, 0.0129224, 1.5, 2.5, 0.0129224, 4.75, 1, 0.0129224, 4.75, 1.25, 0.0129224, 19.5, 19.5, 0.0129224, 19.5, 3, 3.48292, 2.5, 3, 3.48292, 1, 1.5, 3.48292, 2.75, 2, 3.48292, 3.75, -2, 3.48292, 3.75, -1.5, 3.48292, 2.75, -2.25, 3.48292, 1.5, -3.25, 3.48292, 1.75)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 6), PackedInt32Array(6, 5, 3), PackedInt32Array(9, 8, 7), PackedInt32Array(1, 2, 7), PackedInt32Array(7, 2, 10), PackedInt32Array(7, 10, 9), PackedInt32Array(13, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(11, 17, 13), PackedInt32Array(13, 17, 14), PackedInt32Array(14, 17, 16), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(21, 18, 22), PackedInt32Array(22, 18, 23), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 24), PackedInt32Array(24, 27, 30), PackedInt32Array(24, 30, 29), PackedInt32Array(24, 29, 26), PackedInt32Array(3, 4, 31), PackedInt32Array(34, 33, 32), PackedInt32Array(35, 34, 32), PackedInt32Array(31, 35, 3), PackedInt32Array(3, 35, 36), PackedInt32Array(36, 35, 32), PackedInt32Array(37, 8, 9), PackedInt32Array(40, 39, 38), PackedInt32Array(37, 9, 38), PackedInt32Array(38, 9, 40), PackedInt32Array(40, 9, 41), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(47, 44, 46), PackedInt32Array(46, 44, 45), PackedInt32Array(48, 47, 49), PackedInt32Array(49, 47, 46), PackedInt32Array(33, 39, 32), PackedInt32Array(32, 39, 40)]
+cell_height = 0.01
+agent_radius = 0.29
+agent_max_climb = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.5828, 0.684007, 0.94, 1)
@@ -13,15 +26,10 @@ uv1_scale = Vector3(40, 40, 40)
 material = SubResource("StandardMaterial3D_ig7tw")
 size = Vector2(40, 40)
 
-[sub_resource type="Environment" id="Environment_7dm0k"]
-background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(0.99558, 0.99558, 0.99558, 1)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1bvp3"]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Floor" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_7dm0k")
+script = ExtResource("1_1bvp3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.794213, 0.607639, 0, -0.607639, 0.794213, 0, 8.42132, 11.0826)
@@ -35,8 +43,21 @@ transform = Transform3D(-0.524054, 0.806341, 0.274194, -0.289234, -0.471304, 0.8
 light_energy = 0.205
 shadow_enabled = true
 
-[node name="ConveyorBelt" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.999999, 0.00122173, 0, -0.00122173, 0.999999, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(0.363723, 0, -0.931507, 0, 1, 0, 0.931507, 0, 0.363723, -1.51332, -1.19209e-07, 0.119994)
+move_speed = 5.0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_h2yge")
+
+[node name="ConveyorBelt" parent="NavigationRegion3D" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(0.999999, 0.00122173, 0, -0.00122173, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = SubResource("PlaneMesh_7dm0k")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_1bvp3")
