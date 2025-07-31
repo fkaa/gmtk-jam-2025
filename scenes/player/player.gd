@@ -35,6 +35,11 @@ func move_to_position(position: Vector3):
 	print("moving to floor")
 	navigation_agent_3d.target_position = position
 	var final_position = navigation_agent_3d.get_final_position()
+	
+func move_to_clean_plate(plate: PlateOnBelt):
+	print("moving to clean plate: ", plate)
+	target_node = plate
+	action = "clean"
 
 func move_to_plate(plate: PlateOnBelt):
 	print("moving to plate: ", plate)
@@ -82,5 +87,13 @@ func _on_navigation_finished() -> void:
 		if action == "drop":
 			if len(_held_items) > 0:
 				await target_node.add_item(_held_items.pop_back())
+		if action == "clean":
+			if ($wash_timer.time_left == 0):
+				target_node.clean_top_down()
+				$wash_timer.start()
+				#TODO animation..
+			else:
+				pass #TODO inform user wash is on cooldown
+			
 	target_node = null
 	performing_action = false

@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dts3yc7llr6iv"]
+[gd_scene load_steps=6 format=3 uid="uid://dts3yc7llr6iv"]
 
 [ext_resource type="Texture2D" uid="uid://bdd6orvxcs0c3" path="res://assets/plate1.png" id="1_84icw"]
-[ext_resource type="Script" uid="uid://bfrxetn1skh41" path="res://scenes/conveyor_belt/plate_items/dirty_plate.gd" id="1_cnh3l"]
+[ext_resource type="Script" uid="uid://bfrxetn1skh41" path="res://scenes/conveyor_belt/plate_items/dish.gd" id="1_cnh3l"]
 [ext_resource type="Texture2D" uid="uid://dme37w0a5ja7s" path="res://assets/filth1.png" id="2_cnh3l"]
+[ext_resource type="Texture2D" uid="uid://dja38eo0fd8t3" path="res://assets/cutlery1.png" id="3_rabhp"]
+[ext_resource type="Texture2D" uid="uid://mce4kmgkhh3u" path="res://assets/filth2.png" id="5_m1gx1"]
 
 [node name="DirtyPlate" type="Node3D"]
 script = ExtResource("1_cnh3l")
+clean_textures = Array[Texture]([ExtResource("1_84icw"), ExtResource("3_rabhp")])
+dirty_textures = Array[Texture]([ExtResource("2_cnh3l"), ExtResource("5_m1gx1")])
+is_dirty = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 modulate = Color(0.8, 0.91, 1, 1)

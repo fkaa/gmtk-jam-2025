@@ -14,6 +14,13 @@ func _process(delta: float) -> void:
 		var plate = get_plate_over_mouse()
 		if plate:
 			player.drop_on_plate(plate)
+	if Input.is_action_just_pressed("clean"):
+		var plate = get_plate_over_mouse()
+		if plate:
+			player.move_to_clean_plate(plate)
+	# pass data to HUD
+	var hud = $Hud/wash_icon as Hud
+	hud.update_timer_display($Player/wash_timer)
 
 func get_mouse_on_floor_plane() -> Vector3:
 	var mp: Vector2 = get_viewport().get_mouse_position()

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctyp3cdvy7oeo"]
+
+[ext_resource type="Shader" uid="uid://rijvowjp8aqr" path="res://scenes/wash_radial.gdshader" id="1_fls4u"]
+[ext_resource type="Texture2D" uid="uid://cp4fl73tprdjm" path="res://assets/water_drop.png" id="2_1etfg"]
+[ext_resource type="Script" uid="uid://5ir8060twt52" path="res://scenes/wash.gd" id="3_1etfg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7hsmw"]
+shader = ExtResource("1_fls4u")
+shader_parameter/current_angle = 0.0
+shader_parameter/start_angle = 0.0
+shader_parameter/flip = false
+
+[node name="hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="wash_icon" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_7hsmw")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_1etfg")
+script = ExtResource("3_1etfg")
