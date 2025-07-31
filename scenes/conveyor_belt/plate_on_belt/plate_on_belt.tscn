@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs2rxcg3v7vf1"]
+
+[ext_resource type="Texture2D" uid="uid://bdd6orvxcs0c3" path="res://assets/plate1.png" id="1_p0x6o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2orfy"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.61339, 0.61339, 0.61339, 1)
+metallic = 0.48
+roughness = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2orfy"]
+top_radius = 0.345
+bottom_radius = 0.21
+height = 0.055
+radial_segments = 5
+rings = 1
+
+[sub_resource type="TorusMesh" id="TorusMesh_2orfy"]
+inner_radius = 0.305
+outer_radius = 0.355
+rings = 5
+ring_segments = 4
+
+[node name="PlateOnBelt" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.31, 0, 0, 0, 1.31, 0, 0, 0, 1.31, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_2orfy")
+mesh = SubResource("CylinderMesh_2orfy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.07309, 0, -0.751385, 0, 1.31, 0, 0.751385, 0, 1.07309, 0, 0.0275188, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_2orfy")
+mesh = SubResource("TorusMesh_2orfy")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(0.8, 0.91, 1, 1)
+pixel_size = 0.0215
+billboard = 1
+alpha_cut = 1
+texture = ExtResource("1_p0x6o")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpi7adbb86jev"]
+
+[ext_resource type="Texture2D" uid="uid://dja38eo0fd8t3" path="res://assets/cutlery1.png" id="1_d2i3e"]
+[ext_resource type="Texture2D" uid="uid://mce4kmgkhh3u" path="res://assets/filth2.png" id="2_ls6ni"]
+
+[node name="DirtyCutlery" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(0.8, 0.91, 1, 1)
+pixel_size = 0.0165
+billboard = 1
+alpha_cut = 1
+texture = ExtResource("1_d2i3e")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0403821, 0)
+pixel_size = 0.0165
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_ls6ni")
