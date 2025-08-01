@@ -1,0 +1,32 @@
+[gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://bnjprqf8tyldt"]
+
+[ext_resource type="Texture2D" uid="uid://dandoyrs7dusu" path="res://assets/bubbles.png" id="1_wubw8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsxx6"]
+atlas = ExtResource("1_wubw8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wubw8"]
+load_path = "res://.godot/imported/bubbles.png-aef2e2d42768f7bd9d203b61dafd4d00.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oey1"]
+atlas = SubResource("CompressedTexture2D_wubw8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7cdg"]
+atlas = ExtResource("1_wubw8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v1mh"]
+atlas = ExtResource("1_wubw8")
+region = Rect2(32, 32, 32, 32)
+
+[resource]
+frames = 4
+frame_0/texture = SubResource("AtlasTexture_qsxx6")
+frame_1/texture = SubResource("AtlasTexture_8oey1")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("AtlasTexture_y7cdg")
+frame_2/duration = 0.2
+frame_3/texture = SubResource("AtlasTexture_8v1mh")
+frame_3/duration = 0.15

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dxyrpp44tsfsw"]
+
+[ext_resource type="Shader" uid="uid://xwbvdwnv8h3w" path="res://assets/blender/belt_mat.gdshader" id="1_4keuv"]
+[ext_resource type="Texture2D" uid="uid://c4qglaglp2a7" path="res://assets/blender/belt.png" id="2_dix6a"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4keuv")
+shader_parameter/belt_texture = ExtResource("2_dix6a")

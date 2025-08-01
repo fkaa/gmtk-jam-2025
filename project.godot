@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=840
 window/size/viewport_height=680
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move={

@@ -6,7 +6,7 @@ class_name Player
 
 @export var move_speed: float = 1.0
 
-var target_node: PlateOnBelt = null
+var target_node: Node3D = null
 var performing_action: bool = false
 
 var action: String
@@ -51,6 +51,11 @@ func drop_on_plate(plate: PlateOnBelt):
 	target_node = plate
 	action = "drop"
 
+func drop_on_washing_machine(machine: WashingMachine):
+	print("dropping to machine: ", machine)
+	target_node = machine
+	action = "drop"
+
 func _animate_take_item(item: Node3D):
 	# "detach" the item's position from its parent, so we can animate it moving to us
 	item.top_level = true
@@ -78,7 +83,7 @@ func _on_navigation_finished() -> void:
 		return
 	performing_action = true
 	# when we reach the plate after clicking it, we take the top item
-	if target_node:
+	if target_node is PlateOnBelt:
 		if action == "take":
 			var item = target_node.take_item()
 			if item:
