@@ -1,15 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpi7adbb86jev"]
+[gd_scene load_steps=9 format=3 uid="uid://bpi7adbb86jev"]
 
 [ext_resource type="Texture2D" uid="uid://dja38eo0fd8t3" path="res://assets/cutlery1.png" id="1_d2i3e"]
 [ext_resource type="Script" uid="uid://bfrxetn1skh41" path="res://scenes/conveyor_belt/plate_items/dish.gd" id="1_k8diu"]
 [ext_resource type="Texture2D" uid="uid://bdd6orvxcs0c3" path="res://assets/plate1.png" id="2_hmqy5"]
 [ext_resource type="Texture2D" uid="uid://mce4kmgkhh3u" path="res://assets/filth2.png" id="2_ls6ni"]
+[ext_resource type="Texture2D" uid="uid://bdwglx3rh1bag" path="res://assets/bowl1.png" id="4_65dxj"]
 [ext_resource type="Texture2D" uid="uid://dme37w0a5ja7s" path="res://assets/filth1.png" id="4_ljm75"]
+[ext_resource type="Texture2D" uid="uid://b5wyf5axgvubd" path="res://assets/cup1.png" id="5_24jw8"]
+[ext_resource type="Texture2D" uid="uid://cg0scgvky27sn" path="res://assets/filth4.png" id="8_j5px0"]
 
 [node name="DirtyCutlery" type="Node3D"]
 script = ExtResource("1_k8diu")
-clean_textures = Array[Texture]([ExtResource("2_hmqy5"), ExtResource("1_d2i3e")])
-dirty_textures = Array[Texture]([ExtResource("4_ljm75"), ExtResource("2_ls6ni")])
+clean_textures = Array[Texture]([ExtResource("2_hmqy5"), ExtResource("1_d2i3e"), ExtResource("4_65dxj"), ExtResource("5_24jw8")])
+dirty_textures = Array[Texture]([ExtResource("4_ljm75"), ExtResource("2_ls6ni"), ExtResource("8_j5px0"), ExtResource("8_j5px0")])
 dish_type = 1
 is_dirty = true
 

@@ -8,7 +8,6 @@
 shader = ExtResource("1_fls4u")
 shader_parameter/current_angle = 0.0
 shader_parameter/start_angle = 0.0
-shader_parameter/flip = false
 
 [node name="hud" type="Control"]
 layout_mode = 3
@@ -22,7 +21,7 @@ grow_vertical = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_7hsmw")
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 165.0
+offset_bottom = 165.0
 texture = ExtResource("2_1etfg")
 script = ExtResource("3_1etfg")

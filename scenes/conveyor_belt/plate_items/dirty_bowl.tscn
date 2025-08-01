@@ -1,0 +1,32 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1t2i36siuyj8"]
+
+[ext_resource type="Script" uid="uid://bfrxetn1skh41" path="res://scenes/conveyor_belt/plate_items/dish.gd" id="1_lu4df"]
+[ext_resource type="Texture2D" uid="uid://bdd6orvxcs0c3" path="res://assets/plate1.png" id="2_vv2e3"]
+[ext_resource type="Texture2D" uid="uid://dja38eo0fd8t3" path="res://assets/cutlery1.png" id="3_c6a2s"]
+[ext_resource type="Texture2D" uid="uid://dme37w0a5ja7s" path="res://assets/filth1.png" id="4_at6ys"]
+[ext_resource type="Texture2D" uid="uid://bdwglx3rh1bag" path="res://assets/bowl1.png" id="4_oxjnf"]
+[ext_resource type="Texture2D" uid="uid://mce4kmgkhh3u" path="res://assets/filth2.png" id="5_oxjnf"]
+[ext_resource type="Texture2D" uid="uid://b5wyf5axgvubd" path="res://assets/cup1.png" id="5_v3v8b"]
+[ext_resource type="Texture2D" uid="uid://cg0scgvky27sn" path="res://assets/filth4.png" id="8_orom4"]
+[ext_resource type="Texture2D" uid="uid://m01t30v6yjg3" path="res://assets/filth3.png" id="8_oxjnf"]
+
+[node name="DirtyCutlery" type="Node3D"]
+script = ExtResource("1_lu4df")
+clean_textures = Array[Texture]([ExtResource("2_vv2e3"), ExtResource("3_c6a2s"), ExtResource("4_oxjnf"), ExtResource("5_v3v8b")])
+dirty_textures = Array[Texture]([ExtResource("4_at6ys"), ExtResource("5_oxjnf"), ExtResource("8_oxjnf"), ExtResource("8_orom4")])
+dish_type = 2
+is_dirty = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(0.8, 0.91, 1, 1)
+pixel_size = 0.0165
+billboard = 1
+alpha_cut = 1
+texture = ExtResource("3_c6a2s")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0403821, 0)
+pixel_size = 0.0165
+billboard = 1
+texture_filter = 0
+texture = ExtResource("5_oxjnf")

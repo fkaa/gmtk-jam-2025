@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ciupyea3iqa2w"]
+[gd_scene load_steps=14 format=3 uid="uid://ciupyea3iqa2w"]
 
 [ext_resource type="Script" uid="uid://ckax4h7i1gxri" path="res://scenes/conveyor_belt/conveyor_belt.gd" id="1_eigut"]
 [ext_resource type="PackedScene" uid="uid://cs2rxcg3v7vf1" path="res://scenes/conveyor_belt/plate_on_belt/plate_on_belt.tscn" id="1_nrmrm"]
@@ -23,6 +23,13 @@ uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_wx4rt"]
 size = Vector3(4, 1, 1.43)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx4rt"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.166386, 0.393186, 0.2679, 1)
+albedo_texture = ExtResource("5_tyefu")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysxht"]
 diffuse_mode = 3
@@ -93,7 +100,7 @@ mesh = SubResource("BoxMesh_wx4rt")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="BeltMesh"]
 transform = Transform3D(-0.911898, 0, 0.410416, 0, 1, 0, -0.410416, 0, -0.911898, 1.45127, 0.449791, -3.04703)
-material_override = SubResource("StandardMaterial3D_3uf1j")
+material_override = SubResource("StandardMaterial3D_wx4rt")
 mesh = SubResource("BoxMesh_wx4rt")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="BeltMesh"]
@@ -113,6 +120,7 @@ mesh = SubResource("BoxMesh_wx4rt")
 
 [node name="FilthDispenser" type="Node3D" parent="BeltMesh"]
 transform = Transform3D(-0.909243, 0, 0.416265, 0, 1, 0, -0.416265, 0, -0.909243, 0, 0, 0)
+visible = false
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="BeltMesh/FilthDispenser"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35904, 2.57037)

@@ -10,8 +10,10 @@ func take_item() -> Node3D:
 		return items.pop_back()
 	else:
 		return null
+		
 
-func add_item(item: Node3D):
+
+func add_item(item: Node3D, is_new : bool = false):
 	items.append(item)
 	
 	if item.get_parent():
@@ -19,11 +21,29 @@ func add_item(item: Node3D):
 	else:
 		item_holder.add_child(item)
 	
-	await _animate_take_item(item)
+	if (is_new):
+		await _animate_spawn_item(item)
+	else:
+		await _animate_take_item(item)
 	
 	item.top_level = false
 	item.position = Vector3.ZERO
 	item.position.y = len(items) * 0.25
+	
+func _animate_spawn_item(item: Node3D):
+	item.position.y = 50
+	var t = get_tree().create_tween()
+	t.set_trans(t.TRANS_CIRC)
+	t.tween_property(item, "position", Vector3(0, len(items) * 0.25, 0), 0.5)
+	await t.finished
+
+# Deletes the item afterward.. seems wrong for animation function ¯\_(ツ)_/¯
+func _animate_remove_item(item: Node3D):
+	var t = get_tree().create_tween()
+	t.set_trans(t.TRANS_CIRC)
+	t.tween_property(item, "position", Vector3(0, 50, 0), 0.5)
+	await t.finished
+	item.queue_free()
 
 func _animate_take_item(item: Node3D):
 	# "detach" the item's position from its parent, so we can animate it moving to us
@@ -55,7 +75,7 @@ func remove_clean_top_down():
 	var top_dish = items.back() as Dish
 	while ( not top_dish.is_dirty):
 		var remove_dish = take_item()
-		remove_dish.queue_free()
+		_animate_remove_item(remove_dish)
 		if (len(items) == 0): # no more items left
 			return
 		top_dish = items.back()
