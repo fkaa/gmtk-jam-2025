@@ -13,21 +13,28 @@ const DIRTY_STUFF = [
 ]
 
 @onready var plates: Node3D = $Plates
+@onready var belt: MeshInstance3D = $conveyor_belt/Belt
+@onready var speed_label: Label3D = %SpeedLabel
 
-@export var belt_speed: float = 0.5
+@export var belt_speed: float = 0.5:
+	set(val):
+		speed_label.text = "%.2fx" % (val * 2.0)
+		belt_speed = val
 
 var _all_plates: Array[PlateOnBelt]
 
 var receiving_plate_idx = 4;
-
+var belt_mat: ShaderMaterial
 
 func _ready() -> void:
+	belt_mat = belt.get_active_material(0) as ShaderMaterial
 	for p in plates.get_children():
 		_all_plates.append(p as PlateOnBelt)
 
 func _process(delta: float) -> void:
 	var y_rotation_last = plates.rotation.y
 	plates.rotation.y += belt_speed * delta
+	belt_mat.set_shader_parameter("belt_speed", belt_speed)
 	# If we've rotated 1/6 rotation, update the receiving plate, take any clean dishes, then spawn dirty dishes
 	const rotation_spawn_interval=PI/3
 	const rotation_increment_offset_spawn=(PI/3)/2

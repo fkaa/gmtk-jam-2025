@@ -167,3 +167,9 @@ mesh = SubResource("PlaneMesh_kek77")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Misc"]
 transform = Transform3D(8.74228e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 8.74228e-08, -2.93319e-15, 10.4086, 1.56167, -0.702176)
 mesh = SubResource("PlaneMesh_kek77")
+
+[node name="DifficulityTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="DifficulityTimer" to="." method="_on_difficulity_timer_timeout"]

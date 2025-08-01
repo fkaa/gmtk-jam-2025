@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var player: Player = $Player
+@onready var conveyor_belt: Node3D = $NavigationRegion3D/ConveyorBelt
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("move"):
@@ -53,3 +54,7 @@ func get_object_over_mouse() -> Node3D:
 		return result.collider
 	
 	return null
+
+func _on_difficulity_timer_timeout() -> void:
+	conveyor_belt.belt_speed += 0.125
+	pass # Replace with function body.

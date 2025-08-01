@@ -10,8 +10,6 @@ func take_item() -> Node3D:
 		return items.pop_back()
 	else:
 		return null
-		
-
 
 func add_item(item: Node3D, is_new : bool = false):
 	items.append(item)
