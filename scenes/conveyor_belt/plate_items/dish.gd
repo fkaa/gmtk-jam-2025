@@ -4,14 +4,22 @@ extends Node3D
 enum DISH_TYPES
 {
 	PLATE,
-	CUTLERY
+	CUTLERY,
+	BOWL,
+	CUP
 }
 
 @export var clean_textures : Array[Texture]
 @export var dirty_textures : Array[Texture]
 
-@export var dish_type : DISH_TYPES
-@export var is_dirty  : bool
+@export var dish_type  : DISH_TYPES
+@export var is_dirty   : bool
+var         is_landing : bool
+
+func _init() -> void:
+	pass
+	#position.y = 100
+	#is_landing = true
 
 func clean() -> void:
 	is_dirty = false
