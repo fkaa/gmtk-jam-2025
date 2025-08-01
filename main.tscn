@@ -33,7 +33,7 @@ size = Vector2(40, 40)
 script = ExtResource("1_1bvp3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.794213, 0.607639, 0, -0.607639, 0.794213, 0, 8.42132, 11.0826)
+transform = Transform3D(1, 0, 0, 0, 0.794213, 0.607639, 0, -0.607639, 0.794213, 0, 9.70326, 11.0826)
 fov = 37.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

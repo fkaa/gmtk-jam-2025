@@ -4,15 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://cs2rxcg3v7vf1" path="res://scenes/conveyor_belt/plate_on_belt/plate_on_belt.tscn" id="1_nrmrm"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="5_tyefu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7x3f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysxht"]
 diffuse_mode = 3
-albedo_color = Color(0.52, 0.3874, 0.078, 1)
+specular_mode = 1
+albedo_color = Color(0.0235294, 0.105882, 0.168627, 1)
+albedo_texture = ExtResource("5_tyefu")
+uv1_triplanar = true
 
-[sub_resource type="TorusMesh" id="TorusMesh_nrmrm"]
-inner_radius = 1.493
-outer_radius = 1.015
-rings = 7
-ring_segments = 4
+[sub_resource type="BoxMesh" id="BoxMesh_tyefu"]
+size = Vector3(3, 5, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3uf1j"]
+size = Vector3(0.25, 3, 1.75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_15ck5"]
+size = Vector3(3, 2, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uf1j"]
 diffuse_mode = 3
@@ -31,21 +37,11 @@ albedo_color = Color(0.166386, 0.393186, 0.2679, 1)
 albedo_texture = ExtResource("5_tyefu")
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysxht"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.0235294, 0.105882, 0.168627, 1)
-albedo_texture = ExtResource("5_tyefu")
-uv1_triplanar = true
+[sub_resource type="BoxMesh" id="BoxMesh_ysxht"]
+size = Vector3(8.14, 0.175, 0.11)
 
-[sub_resource type="BoxMesh" id="BoxMesh_tyefu"]
-size = Vector3(3, 5, 0.25)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3uf1j"]
-size = Vector3(0.25, 3, 1.75)
-
-[sub_resource type="BoxMesh" id="BoxMesh_15ck5"]
-size = Vector3(3, 2, 30)
+[sub_resource type="BoxMesh" id="BoxMesh_cpp8k"]
+size = Vector3(0.805, 0.235, 1.665)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tyefu"]
 size = Vector3(1.68878, 3.51147, 3.9313)
@@ -76,48 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0862114, 0.985396, -3.47842
 
 [node name="BeltMesh" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(2.966, 0, 0, 0, 2.966, 0, 0, 0, 2.966, 0, 0.136226, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_v7x3f")
-mesh = SubResource("TorusMesh_nrmrm")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.449791, 3.30755)
-material_override = SubResource("StandardMaterial3D_3uf1j")
-mesh = SubResource("BoxMesh_wx4rt")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(0.631678, 0, 0.775231, 0, 1, 0, -0.775231, 0, 0.631678, 2.70528, 0.449791, 1.9831)
-material_override = SubResource("StandardMaterial3D_3uf1j")
-mesh = SubResource("BoxMesh_wx4rt")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(-0.215945, 0, 0.976405, 0, 1, 0, -0.976405, 0, -0.215945, 3.29706, 0.449791, -0.750364)
-material_override = SubResource("StandardMaterial3D_3uf1j")
-mesh = SubResource("BoxMesh_wx4rt")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(-0.911898, 0, 0.410416, 0, 1, 0, -0.410416, 0, -0.911898, 1.45127, 0.449791, -3.04703)
-material_override = SubResource("StandardMaterial3D_wx4rt")
-mesh = SubResource("BoxMesh_wx4rt")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(-0.899352, 0, -0.437226, 0, 1, 0, 0.437226, 0, -0.899352, -1.45127, 0.449791, -3.03294)
-material_override = SubResource("StandardMaterial3D_3uf1j")
-mesh = SubResource("BoxMesh_wx4rt")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(0.206973, 0, 0.978347, 0, 1, 0, -0.978347, 0, 0.206973, -3.25479, 0.449791, -0.891264)
-material_override = SubResource("StandardMaterial3D_3uf1j")
-mesh = SubResource("BoxMesh_wx4rt")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="BeltMesh"]
-transform = Transform3D(-0.61434, 0, 0.789041, 0, 1, 0, -0.789041, 0, -0.61434, -2.62074, 0.449791, 1.99719)
-material_override = SubResource("StandardMaterial3D_3uf1j")
-mesh = SubResource("BoxMesh_wx4rt")
-
 [node name="FilthDispenser" type="Node3D" parent="BeltMesh"]
 transform = Transform3D(-0.909243, 0, 0.416265, 0, 1, 0, -0.416265, 0, -0.909243, 0, 0, 0)
 visible = false
@@ -145,6 +99,79 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9741, 18.97)
 material_override = SubResource("StandardMaterial3D_ysxht")
 mesh = SubResource("BoxMesh_15ck5")
 skeleton = NodePath("../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/ConveyorBelt/BeltMesh/MeshInstance3D2")
+
+[node name="Tables" type="Node3D" parent="BeltMesh"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.449791, 3.30755)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_wx4rt")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(0.631678, 0, 0.775231, 0, 1, 0, -0.775231, 0, 0.631678, 2.70528, 0.449791, 1.9831)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_wx4rt")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(-0.215945, 0, 0.976405, 0, 1, 0, -0.976405, 0, -0.215945, 3.29706, 0.449791, -0.750364)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_wx4rt")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(-0.911898, 0, 0.410416, 0, 1, 0, -0.410416, 0, -0.911898, 1.45127, 0.449791, -3.04703)
+material_override = SubResource("StandardMaterial3D_wx4rt")
+mesh = SubResource("BoxMesh_wx4rt")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(-0.899352, 0, -0.437226, 0, 1, 0, 0.437226, 0, -0.899352, -1.45127, 0.449791, -3.03294)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_wx4rt")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(0.206973, 0, 0.978347, 0, 1, 0, -0.978347, 0, 0.206973, -3.25479, 0.449791, -0.891264)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_wx4rt")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(-0.61434, 0, 0.789041, 0, 1, 0, -0.789041, 0, -0.61434, -2.62074, 0.449791, 1.99719)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_wx4rt")
+skeleton = NodePath("../..")
+
+[node name="HeightLimit" type="Node3D" parent="BeltMesh"]
+transform = Transform3D(1.5171, 0, 0.0938, 0, 1.52, 0, -0.0938, 0, 1.5171, -1.49157, -0.870163, 1.00208)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BeltMesh/HeightLimit"]
+transform = Transform3D(0.0356361, 0.589718, 0.806822, 0.999026, -4.37114e-08, -0.0441254, -0.0260215, 0.807609, -0.589143, 2.10337, -0.361147, -1.75703)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_ysxht")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BeltMesh/HeightLimit"]
+transform = Transform3D(-0.0332325, 0.588319, 0.807946, 0.999108, 0.0406027, 0.0115299, -0.0260215, 0.807609, -0.589143, 4.01159, -0.342957, -2.04353)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_ysxht")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="BeltMesh/HeightLimit"]
+transform = Transform3D(-0.0176197, 0.152984, 0.988071, 0.999109, 0.0406027, 0.0115299, -0.0383545, 0.987394, -0.153563, 3.09185, 3.28176, -1.98206)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_cpp8k")
+skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="BeltMesh/HeightLimit"]
+transform = Transform3D(0.988352, -0.0265579, 0.14985, 0.00800454, 0.992364, 0.123082, -0.151975, -0.120449, 0.981018, 3.04994, 3.31261, -1.81564)
+texture_filter = 0
+modulate = Color(1, 0, 0, 1)
+text = "WASHER HEIGHT
+!! LIMIT !!"
+font_size = 39
 
 [node name="BeltPhysics" type="StaticBody3D" parent="."]
 
