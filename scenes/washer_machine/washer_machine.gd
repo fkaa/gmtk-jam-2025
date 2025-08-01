@@ -1,75 +1,46 @@
-extends Area3D
+extends PlateOnBelt
 class_name WashingMachine
+const BASE_WASH_TIME    = 3
+const COMBO_TIME_SCALAR = 0.75
 
-@onready var item_holder: Node3D = $ItemHolder
+var is_cleaning        : bool
+var active_combo_count : int
+var current_wash_time  : float
 
-var items: Array[Node3D] = []
+var dish_deposit       : PlateOnBelt
 
-func take_item() -> Node3D:
-	if len(items) > 0:
-		return items.pop_back()
-	else:
-		return null
+@onready var cleaning_timer = $CleaningTimer
 
-func add_item(item: Node3D, is_new : bool = false):
-	items.append(item)
-	
-	if item.get_parent():
-		item.reparent(item_holder)
-	else:
-		item_holder.add_child(item)
-	
-	if (is_new):
-		await _animate_spawn_item(item)
-	else:
-		await _animate_take_item(item)
-	
-	item.top_level = false
-	item.position = Vector3.ZERO
-	item.position.y = len(items) * 0.25
-	
-func _animate_spawn_item(item: Node3D):
-	item.position.y = 50
-	var t = get_tree().create_tween()
-	t.set_trans(t.TRANS_CIRC)
-	t.tween_property(item, "position", Vector3(0, len(items) * 0.25, 0), 0.5)
-	await t.finished
+func _process(delta_time) -> void:
+	# Not cleaning, but items are in the queue
+	if (not is_cleaning and items.size() > 0):
+		# start cleaning
+		is_cleaning = true
+		current_wash_time = BASE_WASH_TIME
+		cleaning_timer.set_wait_time(current_wash_time)
+		cleaning_timer.start()
+	elif ( is_cleaning and cleaning_timer.time_left == 0): # Finished cleaning last item
+		var last_dish = clean_bottom_dish()
+		if (items.size() > 0): # more to clean?
+			var next_dish = items[0]
+			if (last_dish.dish_type == next_dish.dish_type): # comboing?
+				active_combo_count += 1
+				current_wash_time *= COMBO_TIME_SCALAR
+			# start timer for next dish
+			cleaning_timer.set_wait_time(current_wash_time)
+			cleaning_timer.start()
+		else: # nothing to clean
+			is_cleaning = false
 
-# Deletes the item afterward.. seems wrong for animation function ¯\_(ツ)_/¯
-func _animate_remove_item(item: Node3D):
-	var t = get_tree().create_tween()
-	t.set_trans(t.TRANS_CIRC)
-	t.tween_property(item, "position", Vector3(0, 50, 0), 0.5)
-	await t.finished
-	item.queue_free()
+func _ready()-> void:
+	# it dont work..
+	dish_deposit = get_parent().get_child(1)
+	pass
 
-func _animate_take_item(item: Node3D):
-	# "detach" the item's position from its parent, so we can animate it moving to us
-	item.top_level = true
-	
-	# animate the item towards us
-	var t = get_tree().create_tween()
-	t.tween_property(item, "global_position", item_holder.global_position, 0.25)
-	await t.finished
-	
-func clean_top_down():
-	if (len(items) == 0): # nothing to clean
-		return
-		
-	var top_dish = items.back() as Dish
-	var top_idx = len(items)-1
-		
-	while (top_idx >= 0): # more to clean
-		var next_dish = items[top_idx]
-		if next_dish.dish_type == top_dish.dish_type:
-			next_dish.clean()
-			top_idx-=1
-		else: # different dish type found, abort cleaning here
-			return
-
-
-func _on_cleaning_timer_timeout() -> void:\
-
-	# if there's more items to clean, start again!
-	if len(items) > 0:
-		$CleaningTimer.start()
+func clean_bottom_dish() -> Dish:
+	var clean_dish : Dish
+	clean_dish = items[0]
+	items.remove_at(0)
+	clean_dish.clean()	
+	dish_deposit.add_item(clean_dish, false, true)
+	return clean_dish

@@ -83,7 +83,7 @@ func _on_navigation_finished() -> void:
 		return
 	performing_action = true
 	# when we reach the plate after clicking it, we take the top item
-	if target_node is PlateOnBelt:
+	if (target_node is PlateOnBelt) or target_node is WashingMachine:
 		if action == "take":
 			var item = target_node.take_item()
 			if item:

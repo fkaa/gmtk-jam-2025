@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwsp7vquh6lk0"]
+[gd_scene load_steps=12 format=3 uid="uid://bwsp7vquh6lk0"]
 
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_7bipk"]
 [ext_resource type="Script" uid="uid://g76tslkdt8th" path="res://scenes/washer_machine/washer_machine.gd" id="1_prn1a"]
 [ext_resource type="Texture2D" uid="uid://byuffadntak7v" path="res://assets/floor_height.png" id="2_n7fbi"]
 [ext_resource type="Texture2D" uid="uid://dvypmtb7dj5w7" path="res://assets/floor_normal.png" id="3_prn1a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n7fbi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl2q2"]
 albedo_color = Color(0.7968, 0.825573, 0.83, 1)
@@ -17,12 +19,6 @@ heightmap_enabled = true
 heightmap_texture = ExtResource("2_n7fbi")
 uv1_scale = Vector3(0.845, 0.845, 0.845)
 uv1_triplanar = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7bipk"]
-size = Vector3(1.81934, 1.4025, 1.72656)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_a8gkp"]
-size = Vector3(1.68262, 1.31467, 1.70215)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bipk"]
 transparency = 1
@@ -59,7 +55,14 @@ subdivide_width = 4
 subdivide_depth = 4
 
 [node name="WasherMachine" type="Area3D"]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_prn1a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.99994, 0, 0.0225495, 0, 4, 0, -0.0225495, 0, 3.99994, 0.00628263, 0.129074, -0.0910543)
+shape = SubResource("SphereShape3D_n7fbi")
+debug_color = Color(0.882456, 0.171498, 0.709839, 0.42)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.610694, 0)
@@ -71,17 +74,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446411, 0)
 operation = 2
 radius = 0.922363
 height = 0.922607
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686398, 0)
-shape = SubResource("BoxShape3D_7bipk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628464, -0.00894165)
-shape = SubResource("BoxShape3D_a8gkp")
-debug_color = Color(0.882456, 0.171498, 0.709839, 0.42)
 
 [node name="BubbleParticles" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02422, 0)

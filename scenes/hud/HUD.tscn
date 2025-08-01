@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctyp3cdvy7oeo"]
 
-[ext_resource type="Shader" uid="uid://rijvowjp8aqr" path="res://scenes/wash_radial.gdshader" id="1_fls4u"]
+[ext_resource type="Shader" uid="uid://rijvowjp8aqr" path="res://scenes/hud/wash_radial.gdshader" id="1_fls4u"]
 [ext_resource type="Texture2D" uid="uid://cp4fl73tprdjm" path="res://assets/water_drop.png" id="2_1etfg"]
-[ext_resource type="Script" uid="uid://5ir8060twt52" path="res://scenes/wash.gd" id="3_1etfg"]
+[ext_resource type="Script" uid="uid://5ir8060twt52" path="res://scenes/hud/hud.gd" id="3_1etfg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7hsmw"]
 shader = ExtResource("1_fls4u")

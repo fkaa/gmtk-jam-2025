@@ -13,8 +13,11 @@ func take_item() -> Node3D:
 		
 
 
-func add_item(item: Node3D, is_new : bool = false):
-	items.append(item)
+func add_item(item: Node3D, is_new : bool = false, to_bottom : bool = false ):
+	if (to_bottom):
+		items.insert(0, item)
+	else:
+		items.append(item)
 	
 	if item.get_parent():
 		item.reparent(item_holder)

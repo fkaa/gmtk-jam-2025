@@ -12,10 +12,12 @@ func _process(delta: float) -> void:
 			player.move_to_position(floor)
 	if Input.is_action_just_pressed("drop"):
 		var object = get_object_over_mouse()
-		if object is PlateOnBelt:
-			player.drop_on_plate(object)
-		elif object is WashingMachine:
+		if object is WashingMachine:
+			print("object is WashingMachine")
 			player.drop_on_washing_machine(object)
+		elif object is PlateOnBelt:
+			print("object is PlateOnBelt")
+			player.drop_on_plate(object)
 	if Input.is_action_just_pressed("clean"):
 		var plate = get_object_over_mouse()
 		if plate is PlateOnBelt:

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://c01pkeo2qat0o"]
+
+[ext_resource type="PackedScene" uid="uid://bwsp7vquh6lk0" path="res://scenes/washer_machine/washer_machine.tscn" id="2_qy6j1"]
+[ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="3_hjp30"]
+[ext_resource type="Script" uid="uid://6fk70iff3oq7" path="res://scenes/conveyor_belt/plate_on_belt/plate_on_belt.gd" id="3_qy6j1"]
+[ext_resource type="Texture2D" uid="uid://byuffadntak7v" path="res://assets/floor_height.png" id="4_qi5fk"]
+[ext_resource type="Texture2D" uid="uid://dvypmtb7dj5w7" path="res://assets/floor_normal.png" id="5_sp4dq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7y4x"]
+albedo_color = Color(0.7968, 0.825573, 0.83, 1)
+albedo_texture = ExtResource("3_hjp30")
+metallic = 0.2
+roughness = 0.38
+normal_enabled = true
+normal_scale = 0.35
+normal_texture = ExtResource("5_sp4dq")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_qi5fk")
+uv1_scale = Vector3(0.845, 0.845, 0.845)
+uv1_triplanar = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qy6j1"]
+
+[node name="DiswasherSet" type="Node3D"]
+
+[node name="WasherMachine" parent="." instance=ExtResource("2_qy6j1")]
+
+[node name="DishDeposit" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0415, 0, 0)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("3_qy6j1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DishDeposit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.610694, 0)
+material_override = SubResource("StandardMaterial3D_o7y4x")
+size = Vector3(2.03125, 1.22711, 1.97461)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="DishDeposit/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446411, 0)
+operation = 2
+radius = 0.922363
+height = 0.922607
+
+[node name="ItemHolder" type="Marker3D" parent="DishDeposit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.780118, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DishDeposit"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.0194092, 0.756516, -0.0255432)
+shape = SubResource("SphereShape3D_qy6j1")
+debug_color = Color(0.882456, 0.171498, 0.709839, 0.42)
