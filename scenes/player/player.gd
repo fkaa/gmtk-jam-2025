@@ -77,7 +77,6 @@ func _hold_item(item: Node3D):
 	item.top_level = false
 	item.position = Vector3.ZERO
 	item.position.y = len(_held_items) * 0.25
-	print(item.get_parent())
 	_held_items.append(item)	
 	clang_audio_player.play()
 

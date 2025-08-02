@@ -108,13 +108,12 @@ func deposit_stack(items: Array[Node3D]):
 		await get_tree().create_timer(wait_between).timeout
 		i += 1
 	
-	print("awaiting tweens")
 	for t in tweens:
 		if t.is_running():
 			await t.finished
-	print("awaited tweens")
+
 	await get_tree().create_timer(0.2).timeout
-	print("not eating!")
+
 	animation_tree.set("parameters/conditions/eat", false)
 	animation_tree.set("parameters/conditions/idle", true)
 	wash_particles.emitting = false
@@ -125,11 +124,7 @@ func deposit_stack(items: Array[Node3D]):
 	pass
 
 func animate_eat():
-	
-	print("eat!!")
 	shake_camera.shake(0.4, 0.1)
-	#animation_player.stop()
-	#animation_player.play("wash_eat")
 	animation_tree.set("parameters/conditions/idle", false)
 	animation_tree.set("parameters/conditions/eat", true)
 	wash_particles.emitting = true
