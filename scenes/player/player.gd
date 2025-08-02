@@ -26,7 +26,8 @@ func _physics_process(delta: float) -> void:
 		%WalkParticles.emitting = true
 		var next_pos = navigation_agent_3d.get_next_path_position()
 		var move_dir = global_position.direction_to(next_pos)
-		var new_velocity = move_speed * move_dir
+		var weight = clamp(len(_held_items) / 8.0, 0, 1.0)
+		var new_velocity = max(move_speed - weight * 4.0, 0) * move_dir
 		
 		velocity = new_velocity
 		look_at(position + move_dir, Vector3.UP, true)
