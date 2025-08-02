@@ -92,8 +92,9 @@ func deposit_stack(items: Array[Node3D]):
 		var item = items[len(items) - 1 - i]
 		item.reparent(item_holder)
 		
+		
 		var a = get_tree().create_tween()
-		a.tween_property(self, "scale", self.scale, 1.25 + i * wait_between * 1.2)
+		a.tween_interval(1.25 + i * wait_between * 1.2)
 		a.tween_callback(animate_eat)
 		tweens.append(a)
 		var t = get_tree().create_tween()
@@ -105,8 +106,11 @@ func deposit_stack(items: Array[Node3D]):
 		await get_tree().create_timer(wait_between).timeout
 		i += 1
 	
+	print("awaiting tweens")
 	for t in tweens:
-		await t.finished
+		if t.is_running():
+			await t.finished
+	print("awaited tweens")
 	await get_tree().create_timer(0.2).timeout
 	print("not eating!")
 	animation_tree.set("parameters/conditions/eat", false)

@@ -6,6 +6,12 @@ extends Node3D
 var score: int
 
 func _process(delta: float) -> void:
+	var obj = get_object_over_mouse()
+	if obj:
+		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+	else:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
 	if Input.is_action_just_pressed("move"):
 		var plate = get_object_over_mouse()
 		if plate is PlateOnBelt:
@@ -66,6 +72,7 @@ func _on_difficulity_timer_timeout() -> void:
 const NICE = preload("res://assets/audio/nice.tres")
 const OK = preload("res://assets/audio/ok.tres")
 const MEH = preload("res://assets/audio/meh.tres")
+
 @onready var score_reaction: AudioStreamPlayer2D = $ScoreReaction
 
 func _on_washer_machine_score(gained: int) -> void:
