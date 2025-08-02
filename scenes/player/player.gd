@@ -89,10 +89,14 @@ func _on_navigation_finished() -> void:
 	# when we reach the plate after clicking it, we take the top item
 	if (target_node is PlateOnBelt) or target_node is WashingMachine:
 		if action == "take":
-			var item = target_node.take_item()
-			if item:
-				await _animate_take_item(item)
-				_hold_item(item)
+			if len(_held_items) < 12:
+				var item = target_node.take_item()
+				if item:
+					await _animate_take_item(item)
+					_hold_item(item)
+			else:
+				# TODO: sfx?
+				pass
 		if action == "drop":
 			if len(_held_items) > 0:
 				if target_node is WashingMachine:
