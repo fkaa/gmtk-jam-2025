@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bck3arfwa6qbj"]
+[gd_scene load_steps=21 format=3 uid="uid://bck3arfwa6qbj"]
 
 [ext_resource type="Script" uid="uid://bu70mjtwa06ye" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_ig7tw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ckbpd5webrhks" path="res://assets/blender/wood.png" id="7_272bh"]
 [ext_resource type="AudioStream" uid="uid://ltdjwb0dq47f" path="res://assets/audio/devjam.mp3" id="10_4c57u"]
 [ext_resource type="AudioStream" uid="uid://ba0qe3od7e060" path="res://assets/audio/meh.tres" id="11_efxa6"]
+[ext_resource type="Texture2D" uid="uid://dv2tb2dws8ua5" path="res://assets/refresh.png" id="12_dg77c"]
 
 [sub_resource type="Environment" id="Environment_7dm0k"]
 background_mode = 1
@@ -157,5 +158,50 @@ stream = ExtResource("11_efxa6")
 volume_db = 1.6
 bus = &"SFX"
 
+[node name="EndScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="HBoxContainer" parent="EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="EndScreen/CenterContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.27, 0.27, 0.27, 0.435294)
+
+[node name="CenterContainer" type="CenterContainer" parent="EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RetryButton" type="Button" parent="EndScreen/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 63
+text = "Retry?"
+icon = ExtResource("12_dg77c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/CenterContainer"]
+layout_mode = 2
+
+[connection signal="broken" from="NavigationRegion3D/ConveyorBelt" to="." method="_on_conveyor_belt_broken"]
 [connection signal="score" from="NavigationRegion3D/WasherMachine" to="." method="_on_washer_machine_score"]
 [connection signal="timeout" from="DifficulityTimer" to="." method="_on_difficulity_timer_timeout"]
+[connection signal="pressed" from="EndScreen/CenterContainer/RetryButton" to="." method="_on_retry_button_pressed"]

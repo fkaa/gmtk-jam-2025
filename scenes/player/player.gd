@@ -35,31 +35,26 @@ func _process(delta: float) -> void:
 
 func move_to_position(position: Vector3):
 	target_node = null
-	print("moving to floor")
 	navigation_agent_3d.target_position = position
 	var final_position = navigation_agent_3d.get_final_position()
 	walk_sfx_timer.start()
 	
 func move_to_clean_plate(plate: PlateOnBelt):
-	print("moving to clean plate: ", plate)
 	target_node = plate
 	action = "clean"
 	walk_sfx_timer.start()
 
 func move_to_plate(plate: PlateOnBelt):
-	print("moving to plate: ", plate)
 	target_node = plate
 	action = "take"
 	walk_sfx_timer.start()
 	
 func drop_on_plate(plate: PlateOnBelt):
-	print("dropping to plate: ", plate)
 	target_node = plate
 	action = "drop"
 	walk_sfx_timer.start()
 
 func drop_on_washing_machine(machine: WashingMachine):
-	print("dropping to machine: ", machine)
 	target_node = machine
 	action = "drop"
 	walk_sfx_timer.start()

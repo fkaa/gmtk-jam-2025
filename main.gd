@@ -4,6 +4,7 @@ extends Node3D
 @onready var conveyor_belt: Node3D = $NavigationRegion3D/ConveyorBelt
 
 var score: int
+var game_over: bool
 
 func _process(delta: float) -> void:
 	var obj = get_object_over_mouse()
@@ -12,25 +13,24 @@ func _process(delta: float) -> void:
 	else:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-	if Input.is_action_just_pressed("move"):
-		var plate = get_object_over_mouse()
-		if plate is PlateOnBelt:
-			player.move_to_plate(plate)
-		else:
-			var floor = get_mouse_on_floor_plane()
-			player.move_to_position(floor)
-	if Input.is_action_just_pressed("drop"):
-		var object = get_object_over_mouse()
-		if object is WashingMachine:
-			print("object is WashingMachine")
-			player.drop_on_washing_machine(object)
-		elif object is PlateOnBelt:
-			print("object is PlateOnBelt")
-			player.drop_on_plate(object)
-	if Input.is_action_just_pressed("clean"):
-		var plate = get_object_over_mouse()
-		if plate is PlateOnBelt:
-			player.move_to_clean_plate(plate)
+	if not game_over:
+		if Input.is_action_just_pressed("move"):
+			var plate = get_object_over_mouse()
+			if plate is PlateOnBelt:
+				player.move_to_plate(plate)
+			else:
+				var floor = get_mouse_on_floor_plane()
+				player.move_to_position(floor)
+		if Input.is_action_just_pressed("drop"):
+			var object = get_object_over_mouse()
+			if object is WashingMachine:
+				player.drop_on_washing_machine(object)
+			elif object is PlateOnBelt:
+				player.drop_on_plate(object)
+		#if Input.is_action_just_pressed("clean"):
+			#var plate = get_object_over_mouse()
+			#if plate is PlateOnBelt:
+				#player.move_to_clean_plate(plate)
 	# pass data to HUD
 	var hud = $Hud/wash_icon as Hud
 	hud.update_timer_display($Player/wash_timer)
@@ -86,3 +86,17 @@ func _on_washer_machine_score(gained: int) -> void:
 
 	score += gained
 	conveyor_belt.score = score
+
+@onready var difficulity_timer: Timer = $DifficulityTimer
+const EXPLOSION = preload("res://assets/audio/explosion.wav")
+func _on_conveyor_belt_broken() -> void:
+	difficulity_timer.stop()
+	score_reaction.stream = EXPLOSION
+	score_reaction.play()
+	game_over = true
+	$EndScreen.visible = true
+	# TODO: game end
+
+
+func _on_retry_button_pressed() -> void:
+	get_tree().reload_current_scene()
