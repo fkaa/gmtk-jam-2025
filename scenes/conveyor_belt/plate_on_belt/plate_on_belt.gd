@@ -2,8 +2,23 @@ extends Area3D
 class_name PlateOnBelt
 
 @onready var item_holder: Node3D = $ItemHolder
+@onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+
+@export var is_on_belt: bool = true
+
+var mat: ShaderMaterial
 
 var items: Array[Node3D] = []
+
+func _ready() -> void:
+	mat = mesh_instance_3d.get_active_material(0) as ShaderMaterial
+
+func _process(delta: float) -> void:
+	if len(items) >= 8:
+		mat.set_shader_parameter("color", Color.hex(0xde3b35db))
+	else:
+		mat.set_shader_parameter("color", Color.hex(0xded59933))
+		
 
 func take_item() -> Node3D:
 	if len(items) > 0:
@@ -11,8 +26,11 @@ func take_item() -> Node3D:
 	else:
 		return null
 
-func add_item(item: Node3D, is_new : bool = false):
-	items.append(item)
+func add_item(item: Node3D, is_new : bool = false, to_bottom : bool = false ):
+	if (to_bottom):
+		items.insert(0, item)
+	else:
+		items.append(item)
 	
 	if item.get_parent():
 		item.reparent(item_holder)
@@ -77,4 +95,3 @@ func remove_clean_top_down():
 		if (len(items) == 0): # no more items left
 			return
 		top_dish = items.back()
-	

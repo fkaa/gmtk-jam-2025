@@ -8,6 +8,9 @@ enum DISH_TYPES
 	BOWL,
 	CUP
 }
+@onready var clean_sprite: Sprite3D = %CleanSprite
+@onready var dirty_sprite: Sprite3D = %DirtySprite
+@onready var sprites: Node3D = %Sprites
 
 @export var clean_textures : Array[Texture]
 @export var dirty_textures : Array[Texture]
@@ -15,6 +18,7 @@ enum DISH_TYPES
 @export var dish_type  : DISH_TYPES
 @export var is_dirty   : bool
 var         is_landing : bool
+var index: int
 
 func _init() -> void:
 	pass
@@ -23,17 +27,17 @@ func _init() -> void:
 
 func clean() -> void:
 	is_dirty = false
-	$Sprite3D2.visible = false
+	dirty_sprite.visible = false
 	
 func dirty() -> void:
 	is_dirty = true
-	$Sprite3D2.visible = true
+	dirty_sprite.visible = true
 
 func _ready() -> void:
-	$Sprite3D.texture  = clean_textures[dish_type]
-	$Sprite3D2.texture = dirty_textures[dish_type]
+	clean_sprite.texture  = clean_textures[dish_type]
+	dirty_sprite.texture = dirty_textures[dish_type]
 	
 func _process(delta: float) -> void:
 	var time_in_sec: float = Time.get_ticks_msec() / 1000.0
-	scale.x = 1.0+((1.0+cos(position.y*200.0 + time_in_sec*5.0)/2.0) * 0.5)
-	scale.y = 1.0+((1.0+sin(position.y*200.0 + time_in_sec*5.0)/2.0) * 0.5)
+	sprites.scale.x = 1.0+((1.0+cos(index*200.0 + time_in_sec*5.0)/2.0) * 0.5)
+	sprites.scale.y = 1.0+((1.0+sin(index*200.0 + time_in_sec*5.0)/2.0) * 0.5)

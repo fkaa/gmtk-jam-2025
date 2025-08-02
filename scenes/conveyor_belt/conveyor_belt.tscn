@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ciupyea3iqa2w"]
+[gd_scene load_steps=10 format=3 uid="uid://ciupyea3iqa2w"]
 
 [ext_resource type="Script" uid="uid://ckax4h7i1gxri" path="res://scenes/conveyor_belt/conveyor_belt.gd" id="1_eigut"]
 [ext_resource type="PackedScene" uid="uid://cs2rxcg3v7vf1" path="res://scenes/conveyor_belt/plate_on_belt/plate_on_belt.tscn" id="1_nrmrm"]
@@ -14,6 +14,9 @@ uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_wx4rt"]
 size = Vector3(6.055, 1, 1.43)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tyefu"]
+size = Vector3(8.905, 1, 1.43)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ysxht"]
 size = Vector3(8.14, 0.175, 0.11)
@@ -60,6 +63,20 @@ unique_name_in_owner = true
 transform = Transform3D(1.47729, -0.116684, 0.338234, -0.0299475, 1.39153, 0.610849, -0.35654, -0.600349, 1.35013, 2.10639, 0.660993, 7.7204)
 texture_filter = 0
 text = "1x"
+font_size = 85
+outline_size = 32
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BeltMesh/Tables"]
+transform = Transform3D(0.266567, 0.0730411, -0.0606929, -0.00147545, 0.770343, 0.0908054, 0.0675628, -0.271359, 0.241445, -2.16326, 0.449791, 7.49618)
+material_override = SubResource("StandardMaterial3D_3uf1j")
+mesh = SubResource("BoxMesh_tyefu")
+skeleton = NodePath("../..")
+
+[node name="ScoreLabel" type="Label3D" parent="BeltMesh/Tables"]
+unique_name_in_owner = true
+transform = Transform3D(1.46615, 0.187224, -0.354621, -0.0299475, 1.39153, 0.610849, 0.399889, -0.582221, 1.34592, -2.25897, 0.660993, 7.68741)
+texture_filter = 0
+text = "0"
 font_size = 85
 outline_size = 32
 

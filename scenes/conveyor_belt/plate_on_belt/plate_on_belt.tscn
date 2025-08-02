@@ -1,10 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs2rxcg3v7vf1"]
+[gd_scene load_steps=7 format=3 uid="uid://cs2rxcg3v7vf1"]
 
 [ext_resource type="Texture2D" uid="uid://bdd6orvxcs0c3" path="res://assets/plate1.png" id="1_p0x6o"]
 [ext_resource type="Script" uid="uid://6fk70iff3oq7" path="res://scenes/conveyor_belt/plate_on_belt/plate_on_belt.gd" id="1_s5snf"]
+[ext_resource type="Shader" uid="uid://3av8ur8cxjfw" path="res://scenes/conveyor_belt/plate_on_belt/spotlight_shader.gdshader" id="3_xdsbl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p0x6o"]
 radius = 1.00991
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdsbl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_xdsbl")
+shader_parameter/color = Color(0.87, 0.23084, 0.2088, 0.858824)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s5snf"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_xdsbl")
+top_radius = 0.0
+bottom_radius = 3.311
+height = 7.451
+radial_segments = 5
+rings = 3
 
 [node name="PlateOnBelt" type="Area3D"]
 collision_layer = 7
@@ -22,3 +38,13 @@ alpha_cut = 1
 texture = ExtResource("1_p0x6o")
 
 [node name="ItemHolder" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.41805, 0)
+light_specular = 1.919
+spot_range = 7.97031
+spot_angle = 24.1143
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95898, 0)
+mesh = SubResource("CylinderMesh_s5snf")

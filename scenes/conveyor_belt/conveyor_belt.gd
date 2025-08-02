@@ -4,7 +4,7 @@ const DIRTY_CUTLERY = preload("res://scenes/conveyor_belt/plate_items/dirty_cutl
 const DIRTY_PLATE = preload("res://scenes/conveyor_belt/plate_items/dirty_plate.tscn")
 const DIRTY_BOWL = preload("res://scenes/conveyor_belt/plate_items/dirty_bowl.tscn")
 const DIRTY_CUP = preload("res://scenes/conveyor_belt/plate_items/dirty_cup.tscn")
-
+const DISH = preload("res://scenes/conveyor_belt/plate_items/dish.tscn")
 const DIRTY_STUFF = [
 	DIRTY_CUTLERY,
 	DIRTY_PLATE,
@@ -48,8 +48,13 @@ func _process(delta: float) -> void:
 	# Check if its time to spawn a dirty dish
 	if floor((y_rotation_last+rotation_increment_offset_spawn) / rotation_spawn_interval ) < floor((plates.rotation.y+rotation_increment_offset_spawn) / rotation_spawn_interval):
 		_spawn_random_thing()
-	
+
+var dishes_spawned = 0
+
 func _spawn_random_thing():
 	var receiving_plate = _all_plates[receiving_plate_idx]
-	var random_thing = DIRTY_STUFF.pick_random().instantiate()
+	var random_thing = DISH.instantiate()
+	random_thing.dish_type = [Dish.DISH_TYPES.PLATE, Dish.DISH_TYPES.CUTLERY, Dish.DISH_TYPES.BOWL, Dish.DISH_TYPES.CUP].pick_random()
+	random_thing.index = dishes_spawned
+	dishes_spawned += 1
 	receiving_plate.add_item(random_thing, true) # Spawn item from above

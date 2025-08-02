@@ -21,7 +21,9 @@ func _physics_process(delta: float) -> void:
 	
 	if navigation_agent_3d.is_navigation_finished():
 		velocity = Vector3.ZERO
+		%WalkParticles.emitting = false
 	else:
+		%WalkParticles.emitting = true
 		var next_pos = navigation_agent_3d.get_next_path_position()
 		var move_dir = global_position.direction_to(next_pos)
 		var new_velocity = move_speed * move_dir
@@ -62,7 +64,7 @@ func _animate_take_item(item: Node3D):
 	
 	# animate the item towards us
 	var t = get_tree().create_tween()
-	t.tween_property(item, "global_position", plate_hold_position.global_position, 0.25)
+	t.tween_property(item, "global_position", plate_hold_position.global_position, 0.25).set_trans(Tween.TRANS_CUBIC)
 	await t.finished
 
 func _hold_item(item: Node3D):
@@ -83,7 +85,7 @@ func _on_navigation_finished() -> void:
 		return
 	performing_action = true
 	# when we reach the plate after clicking it, we take the top item
-	if target_node is PlateOnBelt:
+	if (target_node is PlateOnBelt) or target_node is WashingMachine:
 		if action == "take":
 			var item = target_node.take_item()
 			if item:
@@ -91,7 +93,11 @@ func _on_navigation_finished() -> void:
 				_hold_item(item)
 		if action == "drop":
 			if len(_held_items) > 0:
-				await target_node.add_item(_held_items.pop_back())
+				if target_node is WashingMachine:
+					await target_node.deposit_stack(_held_items)
+					_held_items.clear()
+				else:
+					await target_node.add_item(_held_items.pop_back())
 		if action == "clean":
 			if ($wash_timer.time_left == 0):
 				target_node.clean_top_down()
