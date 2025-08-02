@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://bxht6u27lin45"]
+
+[ext_resource type="AudioStream" uid="uid://bs1q0b3b0j664" path="res://assets/audio/nice1.wav" id="1_kxu8a"]
+[ext_resource type="AudioStream" uid="uid://4jfng1cqab74" path="res://assets/audio/nice2.wav" id="2_h758s"]
+[ext_resource type="AudioStream" uid="uid://b0bkvqcvpj062" path="res://assets/audio/nice3.wav" id="3_eqm2t"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_kxu8a")
+stream_1/stream = ExtResource("2_h758s")
+stream_2/stream = ExtResource("3_eqm2t")

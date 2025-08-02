@@ -1,0 +1,62 @@
+[gd_resource type="AnimatedTexture" load_steps=10 format=3 uid="uid://slhph684bsm0"]
+
+[ext_resource type="Texture2D" uid="uid://cvqkum68fwqiu" path="res://assets/fire_animation/fire_1b_40_1.png" id="1_qr3kd"]
+[ext_resource type="Texture2D" uid="uid://d4k8l7khqgqon" path="res://assets/fire_animation/fire_1b_40_2.png" id="2_0re34"]
+[ext_resource type="Texture2D" uid="uid://c83fx2jn5c1vb" path="res://assets/fire_animation/fire_1b_40_3.png" id="3_aknbt"]
+[ext_resource type="Texture2D" uid="uid://nhey7ry6osto" path="res://assets/fire_animation/fire_1b_40_4.png" id="4_cv26c"]
+[ext_resource type="Texture2D" uid="uid://bddnf1fns0x2m" path="res://assets/fire_animation/fire_1b_40_5.png" id="5_viqvh"]
+[ext_resource type="Texture2D" uid="uid://bwgjxe5lb6h7m" path="res://assets/fire_animation/fire_1b_40_6.png" id="6_2l1gg"]
+[ext_resource type="Texture2D" uid="uid://b2o6iirxpanmp" path="res://assets/fire_animation/fire_1b_40_7.png" id="7_jrw5b"]
+[ext_resource type="Texture2D" uid="uid://cnbw6kpqt4q0p" path="res://assets/fire_animation/fire_1b_40_8.png" id="8_fv7ni"]
+[ext_resource type="Texture2D" uid="uid://dcqg5vbc8rccy" path="res://assets/fire_animation/fire_1b_40_9.png" id="9_eu6xl"]
+
+[resource]
+frames = 40
+frame_0/texture = ExtResource("1_qr3kd")
+frame_1/texture = ExtResource("2_0re34")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_aknbt")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_cv26c")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_viqvh")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_2l1gg")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_jrw5b")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_fv7ni")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("9_eu6xl")
+frame_8/duration = 1.0
+frame_9/duration = 1.0
+frame_10/duration = 1.0
+frame_11/duration = 1.0
+frame_12/duration = 1.0
+frame_13/duration = 1.0
+frame_14/duration = 1.0
+frame_15/duration = 1.0
+frame_16/duration = 1.0
+frame_17/duration = 1.0
+frame_18/duration = 1.0
+frame_19/duration = 1.0
+frame_20/duration = 1.0
+frame_21/duration = 1.0
+frame_22/duration = 1.0
+frame_23/duration = 1.0
+frame_24/duration = 1.0
+frame_25/duration = 1.0
+frame_26/duration = 1.0
+frame_27/duration = 1.0
+frame_28/duration = 1.0
+frame_29/duration = 1.0
+frame_30/duration = 1.0
+frame_31/duration = 1.0
+frame_32/duration = 1.0
+frame_33/duration = 1.0
+frame_34/duration = 1.0
+frame_35/duration = 1.0
+frame_36/duration = 1.0
+frame_37/duration = 1.0
+frame_38/duration = 1.0
+frame_39/duration = 1.0

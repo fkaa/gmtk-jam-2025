@@ -7,3 +7,4 @@
 render_priority = 0
 shader = ExtResource("1_4keuv")
 shader_parameter/belt_texture = ExtResource("2_dix6a")
+shader_parameter/belt_speed = 0.0

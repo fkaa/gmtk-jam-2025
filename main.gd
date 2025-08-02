@@ -3,6 +3,8 @@ extends Node3D
 @onready var player: Player = $Player
 @onready var conveyor_belt: Node3D = $NavigationRegion3D/ConveyorBelt
 
+var score: int
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("move"):
 		var plate = get_object_over_mouse()
@@ -60,3 +62,20 @@ func get_object_over_mouse() -> Node3D:
 func _on_difficulity_timer_timeout() -> void:
 	conveyor_belt.belt_speed += 0.125
 	pass # Replace with function body.
+	
+const NICE = preload("res://assets/audio/nice.tres")
+const OK = preload("res://assets/audio/ok.tres")
+const MEH = preload("res://assets/audio/meh.tres")
+@onready var score_reaction: AudioStreamPlayer2D = $ScoreReaction
+
+func _on_washer_machine_score(gained: int) -> void:
+	if gained < 10:
+		score_reaction.stream = MEH
+	elif gained < 25:
+		score_reaction.stream = OK
+	else:
+		score_reaction.stream = NICE
+	score_reaction.play()
+
+	score += gained
+	conveyor_belt.score = score

@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://ba0qe3od7e060"]
+
+[ext_resource type="AudioStream" uid="uid://dgdpfbifynpgm" path="res://assets/audio/meh1.wav" id="1_7f1ax"]
+[ext_resource type="AudioStream" uid="uid://cw2w0wru3nms" path="res://assets/audio/meh2.wav" id="2_1fuir"]
+[ext_resource type="AudioStream" uid="uid://ntekcoq8ioxn" path="res://assets/audio/meh3.wav" id="3_xhxbp"]
+[ext_resource type="AudioStream" uid="uid://bvb2vde5xkwtb" path="res://assets/audio/meh4.wav" id="4_bt2yk"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_7f1ax")
+stream_1/stream = ExtResource("2_1fuir")
+stream_2/stream = ExtResource("3_xhxbp")
+stream_3/stream = ExtResource("4_bt2yk")

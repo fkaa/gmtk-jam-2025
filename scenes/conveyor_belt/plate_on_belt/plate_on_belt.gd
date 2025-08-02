@@ -3,6 +3,7 @@ class_name PlateOnBelt
 
 @onready var item_holder: Node3D = $ItemHolder
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+@onready var clang_audio_player: AudioStreamPlayer3D = $ClangAudioPlayer
 
 @export var is_on_belt: bool = true
 
@@ -45,6 +46,7 @@ func add_item(item: Node3D, is_new : bool = false, to_bottom : bool = false ):
 	item.top_level = false
 	item.position = Vector3.ZERO
 	item.position.y = len(items) * 0.25
+	clang_audio_player.play()
 	
 func _animate_spawn_item(item: Node3D):
 	item.position.y = 50

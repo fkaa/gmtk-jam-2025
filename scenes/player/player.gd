@@ -37,26 +37,31 @@ func move_to_position(position: Vector3):
 	print("moving to floor")
 	navigation_agent_3d.target_position = position
 	var final_position = navigation_agent_3d.get_final_position()
+	walk_sfx_timer.start()
 	
 func move_to_clean_plate(plate: PlateOnBelt):
 	print("moving to clean plate: ", plate)
 	target_node = plate
 	action = "clean"
+	walk_sfx_timer.start()
 
 func move_to_plate(plate: PlateOnBelt):
 	print("moving to plate: ", plate)
 	target_node = plate
 	action = "take"
+	walk_sfx_timer.start()
 	
 func drop_on_plate(plate: PlateOnBelt):
 	print("dropping to plate: ", plate)
 	target_node = plate
 	action = "drop"
+	walk_sfx_timer.start()
 
 func drop_on_washing_machine(machine: WashingMachine):
 	print("dropping to machine: ", machine)
 	target_node = machine
 	action = "drop"
+	walk_sfx_timer.start()
 
 func _animate_take_item(item: Node3D):
 	# "detach" the item's position from its parent, so we can animate it moving to us
@@ -64,7 +69,7 @@ func _animate_take_item(item: Node3D):
 	
 	# animate the item towards us
 	var t = get_tree().create_tween()
-	t.tween_property(item, "global_position", plate_hold_position.global_position, 0.25).set_trans(Tween.TRANS_CUBIC)
+	t.tween_property(item, "global_position", plate_hold_position.global_position, 0.25).set_trans(Tween.TRANS_EXPO)
 	await t.finished
 
 func _hold_item(item: Node3D):
@@ -78,11 +83,13 @@ func _hold_item(item: Node3D):
 	item.position.y = len(_held_items) * 0.25
 	print(item.get_parent())
 	_held_items.append(item)	
+	clang_audio_player.play()
 
 func _on_navigation_finished() -> void:
 	print("finished navigating")
 	if performing_action:
 		return
+	walk_sfx_timer.stop()
 	performing_action = true
 	# when we reach the plate after clicking it, we take the top item
 	if (target_node is PlateOnBelt) or target_node is WashingMachine:
@@ -108,3 +115,10 @@ func _on_navigation_finished() -> void:
 			
 	target_node = null
 	performing_action = false
+
+@onready var walk_audio_player: AudioStreamPlayer3D = $WalkAudioPlayer
+@onready var walk_sfx_timer: Timer = $WalkSFXTimer
+@onready var clang_audio_player: AudioStreamPlayer3D = $ClangAudioPlayer
+
+func _on_walk_sfx_timer_timeout() -> void:
+	walk_audio_player.play()

@@ -8,10 +8,15 @@ var is_cleaning        : bool
 var active_combo_count : int
 var current_wash_time  : float
 
+signal score(gained: int)
+
 @onready var cleaning_timer = $CleaningTimer
 @onready var item_holder: Node3D = %ItemHolder
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var wash_particles: CPUParticles3D = %WashParticles
+@onready var bubble_p_layer: AudioStreamPlayer2D = $BubblePlayer
+const SCORE_FX = preload("res://scenes/score_fx/score_fx.tscn")
 
 var items: Array[Node3D] = []
 
@@ -22,7 +27,65 @@ func _ready()-> void:
 	# it dont work..
 	pass
 
+# TODO: pairs
+# TODO: triplet
+# TODO: quad
+# TODO: combine above, eg. 2 pairs 1 triplet
+
+func get_points(items: Array[Node3D]) -> Node3D:
+	var ones = 0
+	var doubles = 0
+	var triples = 0
+	var quads = 0
+	
+	var last_type = -1
+	var current_same = 0
+	
+	for i in items:
+		if i is Dish:
+			if last_type == i.dish_type:
+				current_same += 1
+			else:
+				match current_same:
+					0: pass
+					1: ones += 1
+					2: doubles += 1
+					3: triples += 1
+					4: quads += 1
+					_: quads += 1
+				current_same = 1
+			last_type = i.dish_type
+	
+	match current_same:
+		0: pass
+		1: ones += 1
+		2: doubles += 1
+		3: triples += 1
+		4: quads += 1
+		_: quads += 1
+	
+	var points = ones + (doubles * 2 * 2) + (triples * 3 * 3) + (quads * 4 * 4)
+	
+	var description = ""
+	
+	if quads > 0:
+		description += "%d quads!! " % quads
+	
+	if triples > 0:
+		description += "%d triples! " % triples
+		
+	if doubles > 0:
+		description += "%d doubles" % doubles
+	
+	var score = SCORE_FX.instantiate()
+	score.score = points
+	score.description = description
+	
+	return score
+
 func deposit_stack(items: Array[Node3D]):
+	var points = get_points(items)
+	
 	var tweens = []
 	var wait_between = 0.1
 	for i in range(0, len(items)):
@@ -48,6 +111,11 @@ func deposit_stack(items: Array[Node3D]):
 	print("not eating!")
 	animation_tree.set("parameters/conditions/eat", false)
 	animation_tree.set("parameters/conditions/idle", true)
+	wash_particles.emitting = false
+	
+	add_child(points)
+	
+	score.emit(points.score)
 	pass
 
 func animate_eat():
@@ -56,6 +124,7 @@ func animate_eat():
 	#animation_player.play("wash_eat")
 	animation_tree.set("parameters/conditions/idle", false)
 	animation_tree.set("parameters/conditions/eat", true)
+	wash_particles.emitting = true
 	
 func clean_bottom_dish() -> Dish:
 	var clean_dish : Dish

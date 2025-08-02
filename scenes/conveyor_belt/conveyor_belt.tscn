@@ -1,9 +1,177 @@
-[gd_scene load_steps=10 format=3 uid="uid://ciupyea3iqa2w"]
+[gd_scene load_steps=51 format=3 uid="uid://ciupyea3iqa2w"]
 
 [ext_resource type="Script" uid="uid://ckax4h7i1gxri" path="res://scenes/conveyor_belt/conveyor_belt.gd" id="1_eigut"]
 [ext_resource type="PackedScene" uid="uid://cs2rxcg3v7vf1" path="res://scenes/conveyor_belt/plate_on_belt/plate_on_belt.tscn" id="1_nrmrm"]
+[ext_resource type="Texture2D" uid="uid://cvqkum68fwqiu" path="res://assets/fire_animation/fire_1b_40_1.png" id="3_dg6i7"]
+[ext_resource type="Texture2D" uid="uid://d4k8l7khqgqon" path="res://assets/fire_animation/fire_1b_40_2.png" id="4_vioki"]
 [ext_resource type="PackedScene" uid="uid://d1nqgafudduus" path="res://assets/blender/conveyor_belt.glb" id="4_wx4rt"]
+[ext_resource type="Texture2D" uid="uid://c83fx2jn5c1vb" path="res://assets/fire_animation/fire_1b_40_3.png" id="5_bkl01"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="5_tyefu"]
+[ext_resource type="Texture2D" uid="uid://nhey7ry6osto" path="res://assets/fire_animation/fire_1b_40_4.png" id="6_4qxrw"]
+[ext_resource type="Texture2D" uid="uid://bddnf1fns0x2m" path="res://assets/fire_animation/fire_1b_40_5.png" id="7_a5w0w"]
+[ext_resource type="Texture2D" uid="uid://bwgjxe5lb6h7m" path="res://assets/fire_animation/fire_1b_40_6.png" id="8_7k350"]
+[ext_resource type="Texture2D" uid="uid://b2o6iirxpanmp" path="res://assets/fire_animation/fire_1b_40_7.png" id="9_bbpe8"]
+[ext_resource type="Texture2D" uid="uid://cnbw6kpqt4q0p" path="res://assets/fire_animation/fire_1b_40_8.png" id="10_cts74"]
+[ext_resource type="Texture2D" uid="uid://dcqg5vbc8rccy" path="res://assets/fire_animation/fire_1b_40_9.png" id="11_by6yg"]
+[ext_resource type="Texture2D" uid="uid://cwws10617baek" path="res://assets/fire_animation/fire_1b_40_10.png" id="12_hi0vs"]
+[ext_resource type="Texture2D" uid="uid://ko6p5l82d5be" path="res://assets/fire_animation/fire_1b_40_11.png" id="13_if63h"]
+[ext_resource type="Texture2D" uid="uid://dsa15a3bjjy6s" path="res://assets/fire_animation/fire_1b_40_12.png" id="14_mghff"]
+[ext_resource type="Texture2D" uid="uid://b8w5hc57qa88u" path="res://assets/fire_animation/fire_1b_40_13.png" id="15_q45rv"]
+[ext_resource type="Texture2D" uid="uid://bko8uo84mt5xa" path="res://assets/fire_animation/fire_1b_40_14.png" id="16_fm60v"]
+[ext_resource type="Texture2D" uid="uid://bcilm66t4sr46" path="res://assets/fire_animation/fire_1b_40_15.png" id="17_xlsgd"]
+[ext_resource type="Texture2D" uid="uid://dmisijm06rgo6" path="res://assets/fire_animation/fire_1b_40_16.png" id="18_sbwp7"]
+[ext_resource type="Texture2D" uid="uid://c2jsmn83biwqi" path="res://assets/fire_animation/fire_1b_40_17.png" id="19_3ekfv"]
+[ext_resource type="Texture2D" uid="uid://dfw678uqsm3l2" path="res://assets/fire_animation/fire_1b_40_18.png" id="20_o8bq2"]
+[ext_resource type="Texture2D" uid="uid://dyv82006cwevb" path="res://assets/fire_animation/fire_1b_40_19.png" id="21_kjxed"]
+[ext_resource type="Texture2D" uid="uid://bvi5y1fhbsa6w" path="res://assets/fire_animation/fire_1b_40_20.png" id="22_rxf40"]
+[ext_resource type="Texture2D" uid="uid://e6eyt1uvj801" path="res://assets/fire_animation/fire_1b_40_21.png" id="23_3vq05"]
+[ext_resource type="Texture2D" uid="uid://c1klnmmsajvas" path="res://assets/fire_animation/fire_1b_40_22.png" id="24_525l6"]
+[ext_resource type="Texture2D" uid="uid://b5ot66o40n1w4" path="res://assets/fire_animation/fire_1b_40_23.png" id="25_e1ldv"]
+[ext_resource type="Texture2D" uid="uid://bg5aw0xy003pw" path="res://assets/fire_animation/fire_1b_40_24.png" id="26_454kd"]
+[ext_resource type="Texture2D" uid="uid://bsibqkfa563cl" path="res://assets/fire_animation/fire_1b_40_25.png" id="27_d1jei"]
+[ext_resource type="Texture2D" uid="uid://bilvoxdijp84" path="res://assets/fire_animation/fire_1b_40_26.png" id="28_d2mrn"]
+[ext_resource type="Texture2D" uid="uid://vkfwolxlyg71" path="res://assets/fire_animation/fire_1b_40_27.png" id="29_cg2bl"]
+[ext_resource type="Texture2D" uid="uid://bsapqelac244m" path="res://assets/fire_animation/fire_1b_40_28.png" id="30_if1m8"]
+[ext_resource type="Texture2D" uid="uid://cqhq6g1tig2y5" path="res://assets/fire_animation/fire_1b_40_29.png" id="31_tjhxo"]
+[ext_resource type="Texture2D" uid="uid://dv6bi3fnys8gh" path="res://assets/fire_animation/fire_1b_40_30.png" id="32_iplfs"]
+[ext_resource type="Texture2D" uid="uid://c5kugn4c8hcge" path="res://assets/fire_animation/fire_1b_40_31.png" id="33_r7pv1"]
+[ext_resource type="Texture2D" uid="uid://cgifn6hb1x5bb" path="res://assets/fire_animation/fire_1b_40_32.png" id="34_b5had"]
+[ext_resource type="Texture2D" uid="uid://55vstgteimao" path="res://assets/fire_animation/fire_1b_40_33.png" id="35_joifq"]
+[ext_resource type="Texture2D" uid="uid://cthpq1oaiipxp" path="res://assets/fire_animation/fire_1b_40_34.png" id="36_ivu4t"]
+[ext_resource type="Texture2D" uid="uid://bkrk6vgwd12gb" path="res://assets/fire_animation/fire_1b_40_35.png" id="37_n88k7"]
+[ext_resource type="Texture2D" uid="uid://1ev6kcws2wkl" path="res://assets/fire_animation/fire_1b_40_36.png" id="38_djmsx"]
+[ext_resource type="Texture2D" uid="uid://b5af6wmwy566f" path="res://assets/fire_animation/fire_1b_40_37.png" id="39_7au0b"]
+[ext_resource type="Texture2D" uid="uid://4d81lcrypg6y" path="res://assets/fire_animation/fire_1b_40_38.png" id="40_doce1"]
+[ext_resource type="Texture2D" uid="uid://bqwq86uf7ot7i" path="res://assets/fire_animation/fire_1b_40_39.png" id="41_bwvq8"]
+[ext_resource type="Texture2D" uid="uid://bespsbyt2onfo" path="res://assets/fire_animation/fire_1b_40_40.png" id="42_lvxfe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_febt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dg6i7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_vioki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bkl01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4qxrw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a5w0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7k350")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bbpe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cts74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_by6yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hi0vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_if63h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mghff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_q45rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fm60v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xlsgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sbwp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3ekfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_o8bq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kjxed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rxf40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3vq05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_525l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_e1ldv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_454kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_d1jei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_d2mrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_cg2bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_if1m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_tjhxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_iplfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_r7pv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_b5had")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_joifq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ivu4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_n88k7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_djmsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_7au0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_doce1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_bwvq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_lvxfe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 40.0
+}]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uf1j"]
 diffuse_mode = 3
@@ -47,6 +215,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.30297, 0.985396, -3.65218)
 
 [node name="PlateOnBelt2" parent="Plates" instance=ExtResource("1_nrmrm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0372512, 0.985396, -7.23884)
+
+[node name="Fires" type="Node3D" parent="Plates"]
+visible = false
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Plates/Fires"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55942, 0.0870833, 6.93926)
+offset = Vector2(0, 61.175)
+modulate = Color(2.762, 0.52, 0.52, 1)
+pixel_size = 0.0945
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="Plates/Fires"]
+transform = Transform3D(0.999621, 0.0275204, 0, -0.0275204, 0.999621, 0, 0, 0, 1, -4.86625, 0.0870833, -4.86702)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.0945
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="Plates/Fires"]
+transform = Transform3D(0.999621, 0.0275204, 0, -0.0275204, 0.999621, 0, 0, 0, 1, -3.74403, 0.0870833, 6.39208)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.0945
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
 
 [node name="BeltMesh" type="Node3D" parent="."]
 
@@ -110,6 +320,89 @@ HEIGHT LIMIT
 !!!"
 font_size = 39
 
+[node name="Fires" type="Node3D" parent="BeltMesh"]
+visible = false
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="BeltMesh/Fires"]
+transform = Transform3D(1.60383, 0.056858, 0, -0.0883766, 1.03184, 0, 0, 0, 1, 6.32213, 3.96956, -1.05621)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.059
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="BeltMesh/Fires"]
+transform = Transform3D(1.06898, 0.0558131, 0, -0.0589042, 1.01288, 0, 0, 0, 1, 5.72967, 0.59528, -0.610673)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.0435
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
+[node name="AnimatedSprite3D5" type="AnimatedSprite3D" parent="BeltMesh/Fires"]
+transform = Transform3D(1.06898, 0.0558131, 0, -0.0589042, 1.01288, 0, 0, 0, 1, 1.863, -0.103012, 8.29303)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.0435
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
+[node name="AnimatedSprite3D6" type="AnimatedSprite3D" parent="BeltMesh/Fires"]
+transform = Transform3D(1.06898, 0.0558131, 0, -0.0589042, 1.01288, 0, 0, 0, 1, -8.08622, -0.103012, 1.75439)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.0435
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
+[node name="AnimatedSprite3D7" type="AnimatedSprite3D" parent="BeltMesh/Fires"]
+transform = Transform3D(1.06898, 0.0558131, 0, -0.0589042, 1.01288, 0, 0, 0, 1, 0.531107, -0.103011, 2.45768)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.0435
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
+[node name="AnimatedSprite3D8" type="AnimatedSprite3D" parent="BeltMesh/Fires"]
+transform = Transform3D(1.06898, 0.0558131, 0, -0.0589042, 1.01288, 0, 0, 0, 1, 0.761073, 1.75001, -0.0545514)
+offset = Vector2(0, 61.175)
+modulate = Color(1, 0.52, 0.52, 1)
+pixel_size = 0.0435
+billboard = 1
+alpha_cut = 1
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_febt2")
+autoplay = "default"
+frame_progress = 0.607149
+speed_scale = -1.0
+
 [node name="conveyor_belt" parent="." instance=ExtResource("4_wx4rt")]
+
+[node name="BeltSFX" type="AudioStreamPlayer2D" parent="."]
 
 [editable path="conveyor_belt"]

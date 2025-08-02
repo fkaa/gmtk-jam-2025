@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwsp7vquh6lk0"]
+[gd_scene load_steps=28 format=3 uid="uid://bwsp7vquh6lk0"]
 
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_7bipk"]
 [ext_resource type="Script" uid="uid://g76tslkdt8th" path="res://scenes/washer_machine/washer_machine.gd" id="1_prn1a"]
 [ext_resource type="Texture2D" uid="uid://byuffadntak7v" path="res://assets/floor_height.png" id="2_n7fbi"]
 [ext_resource type="Texture2D" uid="uid://dvypmtb7dj5w7" path="res://assets/floor_normal.png" id="3_prn1a"]
+[ext_resource type="AudioStream" uid="uid://door28hso3ibo" path="res://assets/audio/bubble.wav" id="5_pl2q2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pl2q2"]
 size = Vector3(0.546631, 0.382324, 0.519531)
@@ -42,7 +43,7 @@ radial_segments = 5
 rings = 3
 
 [sub_resource type="Curve" id="Curve_7bipk"]
-_data = [Vector2(0, 0.995635), 0.0, 0.0, 0, 0, Vector2(0.929091, 0.803559), -1.70067, -1.70067, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.995635), 0.0, 0.0, 0, 0, Vector2(0.787611, 0.775281), -1.70067, -1.70067, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7fbi"]
@@ -71,6 +72,37 @@ size = Vector3(8.14, 0.175, 0.11)
 [sub_resource type="BoxMesh" id="BoxMesh_uf63r"]
 size = Vector3(0.805, 0.235, 1.665)
 
+[sub_resource type="Animation" id="Animation_pl2q2"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BubblePlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uf63r"]
+random_pitch = 1.45
+random_volume_offset_db = 0.35
+streams_count = 1
+stream_0/stream = ExtResource("5_pl2q2")
+
 [sub_resource type="Animation" id="Animation_prn1a"]
 resource_name = "wash_eat"
 length = 0.234
@@ -82,16 +114,21 @@ tracks/0/path = NodePath("Mesh")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.1, 1, 1.3, 1.3, 1.3, 0.133333, 1, 1.3, 1.5, 1.5, 0.233333, 1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_pl2q2"]
-length = 0.001
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BubblePlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_uf63r")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_uf63r"]
 resource_name = "wash_idle"
@@ -104,6 +141,21 @@ tracks/0/path = NodePath("Mesh")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.1, 1, 1.3, 1.3, 1.3, 0.2, 1, 1, 1, 1, 0.3, 1, 1, 1, 1, 2, 1, 1, 1, 1)
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BubblePlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uf63r"]
 _data = {
@@ -173,6 +225,39 @@ operation = 2
 radius = 0.922363
 height = 0.922607
 
+[node name="WashParticles" type="CPUParticles3D" parent="Mesh"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09914, 0)
+emitting = false
+amount = 16
+lifetime = 0.98
+randomness = 0.45
+lifetime_randomness = 0.5
+local_coords = true
+mesh = SubResource("SphereMesh_a8gkp")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 36.645, 1)
+emission_ring_height = 0.1
+emission_ring_radius = 0.88
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 75.93
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 7.05
+initial_velocity_max = 7.05
+angular_velocity_min = -407.82
+angular_velocity_max = 443.05
+radial_accel_min = -0.3
+radial_accel_max = 0.45
+damping_min = 4.815
+damping_max = 4.815
+angle_min = -195.0
+angle_max = 274.0
+scale_amount_min = 3.45
+scale_amount_max = 4.45
+scale_amount_curve = SubResource("Curve_7bipk")
+
 [node name="BubbleParticles" type="CPUParticles3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02422, 0)
 amount = 16
@@ -234,12 +319,14 @@ font_size = 48
 libraries = {
 &"": SubResource("AnimationLibrary_uf63r")
 }
-autoplay = "wash_eat"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_32yj6")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/eat = false
 parameters/conditions/idle = true
+
+[node name="BubblePlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="timeout" from="CleaningTimer" to="." method="_on_cleaning_timer_timeout"]
