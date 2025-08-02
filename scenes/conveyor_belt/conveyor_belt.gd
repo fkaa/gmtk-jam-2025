@@ -24,6 +24,7 @@ signal broken
 @onready var belt: MeshInstance3D = $conveyor_belt/Belt
 @onready var speed_label: Label3D = %SpeedLabel
 @onready var score_label: Label3D = %ScoreLabel
+@export var shake_camera: CameraShake
 
 @export var belt_speed: float = 0.5:
 	set(val):
@@ -48,6 +49,7 @@ var exploded = false
 
 func explode():
 	if not exploded:
+		shake_camera.shake(1, 1)
 		broken.emit()
 		fires.visible = true
 		fires2.visible = true

@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bck3arfwa6qbj"]
+[gd_scene load_steps=22 format=3 uid="uid://bck3arfwa6qbj"]
 
 [ext_resource type="Script" uid="uid://bu70mjtwa06ye" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ciupyea3iqa2w" path="res://scenes/conveyor_belt/conveyor_belt.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bhfqsqvm64uug" path="res://shake.gd" id="2_dg77c"]
 [ext_resource type="PackedScene" uid="uid://b1rn0msbqxrki" path="res://scenes/player/player.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://byuffadntak7v" path="res://assets/floor_height.png" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ctyp3cdvy7oeo" path="res://scenes/hud/HUD.tscn" id="5_lquwl"]
@@ -73,6 +74,9 @@ script = ExtResource("1_1bvp3")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.777069, 0.629415, 0, -0.629415, 0.777069, 0, 12.9635, 16.8958)
 fov = 37.0
+script = ExtResource("2_dg77c")
+
+[node name="ShakeTimer" type="Timer" parent="Camera3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7dm0k")
@@ -101,8 +105,9 @@ autostart = true
 transform = Transform3D(1.00015, 0, 0, 0, 1.00015, 0, 0, 0, 1.00015, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h2yge")
 
-[node name="ConveyorBelt" parent="NavigationRegion3D" instance=ExtResource("2_0xm2m")]
+[node name="ConveyorBelt" parent="NavigationRegion3D" node_paths=PackedStringArray("shake_camera") instance=ExtResource("2_0xm2m")]
 transform = Transform3D(0.999999, 0.00122173, 0, -0.00122173, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+shake_camera = NodePath("../../Camera3D")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032536, 0)
@@ -120,8 +125,9 @@ shape = SubResource("WorldBoundaryShape3D_1bvp3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0782628, 0)
 shape = SubResource("BoxShape3D_7mycd")
 
-[node name="WasherMachine" parent="NavigationRegion3D" instance=ExtResource("6_7mycd")]
+[node name="WasherMachine" parent="NavigationRegion3D" node_paths=PackedStringArray("shake_camera") instance=ExtResource("6_7mycd")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.0695029, 0.0272589, 0.3521)
+shake_camera = NodePath("../../Camera3D")
 
 [node name="Hud" parent="." instance=ExtResource("5_lquwl")]
 visible = false
@@ -201,6 +207,7 @@ icon = ExtResource("12_dg77c")
 [node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/CenterContainer"]
 layout_mode = 2
 
+[connection signal="timeout" from="Camera3D/ShakeTimer" to="Camera3D" method="_on_shake_timer_timeout"]
 [connection signal="broken" from="NavigationRegion3D/ConveyorBelt" to="." method="_on_conveyor_belt_broken"]
 [connection signal="score" from="NavigationRegion3D/WasherMachine" to="." method="_on_washer_machine_score"]
 [connection signal="timeout" from="DifficulityTimer" to="." method="_on_difficulity_timer_timeout"]

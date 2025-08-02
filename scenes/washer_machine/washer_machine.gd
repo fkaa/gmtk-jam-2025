@@ -8,6 +8,8 @@ var is_cleaning        : bool
 var active_combo_count : int
 var current_wash_time  : float
 
+@export var shake_camera       : CameraShake
+
 signal score(gained: int)
 
 @onready var cleaning_timer = $CleaningTimer
@@ -16,6 +18,7 @@ signal score(gained: int)
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var wash_particles: CPUParticles3D = %WashParticles
 @onready var bubble_p_layer: AudioStreamPlayer2D = $BubblePlayer
+
 const SCORE_FX = preload("res://scenes/score_fx/score_fx.tscn")
 
 var items: Array[Node3D] = []
@@ -24,7 +27,6 @@ func _process(delta_time) -> void:
 	pass
 
 func _ready()-> void:
-	# it dont work..
 	pass
 
 # TODO: pairs
@@ -123,7 +125,9 @@ func deposit_stack(items: Array[Node3D]):
 	pass
 
 func animate_eat():
+	
 	print("eat!!")
+	shake_camera.shake(0.4, 0.1)
 	#animation_player.stop()
 	#animation_player.play("wash_eat")
 	animation_tree.set("parameters/conditions/idle", false)
