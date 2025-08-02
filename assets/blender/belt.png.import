@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4qglaglp2a7"
-path.s3tc="res://.godot/imported/belt.png-3b62c325c3f8a797cd95a439b43db4ac.s3tc.ctex"
+path="res://.godot/imported/belt.png-3b62c325c3f8a797cd95a439b43db4ac.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/blender/belt.png"
-dest_files=["res://.godot/imported/belt.png-3b62c325c3f8a797cd95a439b43db4ac.s3tc.ctex"]
+dest_files=["res://.godot/imported/belt.png-3b62c325c3f8a797cd95a439b43db4ac.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

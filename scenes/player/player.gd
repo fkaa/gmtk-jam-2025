@@ -15,7 +15,7 @@ var _held_items: Array[Node3D] = []
 func _ready() -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if target_node:
 		navigation_agent_3d.target_position = target_node.global_position
 	
@@ -87,7 +87,6 @@ func _hold_item(item: Node3D):
 	clang_audio_player.play()
 
 func _on_navigation_finished() -> void:
-	print("finished navigating")
 	if performing_action:
 		return
 	walk_sfx_timer.stop()

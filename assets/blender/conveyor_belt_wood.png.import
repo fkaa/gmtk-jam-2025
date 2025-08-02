@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mba01n60fhsa"
-path.s3tc="res://.godot/imported/conveyor_belt_wood.png-0ecdc24784a86fa5bf2d65e259da6409.s3tc.ctex"
+path="res://.godot/imported/conveyor_belt_wood.png-0ecdc24784a86fa5bf2d65e259da6409.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "dc443b2ca535e94c97c8591559c6ba3f"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/blender/conveyor_belt_wood.png"
-dest_files=["res://.godot/imported/conveyor_belt_wood.png-0ecdc24784a86fa5bf2d65e259da6409.s3tc.ctex"]
+dest_files=["res://.godot/imported/conveyor_belt_wood.png-0ecdc24784a86fa5bf2d65e259da6409.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

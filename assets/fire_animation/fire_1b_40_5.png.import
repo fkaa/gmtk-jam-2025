@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bddnf1fns0x2m"
-path.s3tc="res://.godot/imported/fire_1b_40_5.png-d89d85e075a2d5a24917fc1a026b66a1.s3tc.ctex"
+path="res://.godot/imported/fire_1b_40_5.png-d89d85e075a2d5a24917fc1a026b66a1.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/fire_animation/fire_1b_40_5.png"
-dest_files=["res://.godot/imported/fire_1b_40_5.png-d89d85e075a2d5a24917fc1a026b66a1.s3tc.ctex"]
+dest_files=["res://.godot/imported/fire_1b_40_5.png-d89d85e075a2d5a24917fc1a026b66a1.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

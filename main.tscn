@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bck3arfwa6qbj"]
+[gd_scene load_steps=20 format=3 uid="uid://bck3arfwa6qbj"]
 
 [ext_resource type="Script" uid="uid://bu70mjtwa06ye" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_ig7tw"]
@@ -15,9 +15,9 @@
 [sub_resource type="Environment" id="Environment_7dm0k"]
 background_mode = 1
 ambient_light_source = 2
-ambient_light_color = Color(0.103743, 0.103744, 0.103744, 1)
 glow_enabled = true
-glow_bloom = 0.17
+glow_intensity = 0.3
+glow_bloom = 0.23
 fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.775
@@ -36,6 +36,7 @@ agent_max_climb = 0.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.574, 0.6244, 0.7, 1)
 albedo_texture = ExtResource("1_ig7tw")
+roughness = 0.5
 normal_enabled = true
 normal_scale = 0.35
 normal_texture = ExtResource("6_kek77")
@@ -51,19 +52,6 @@ size = Vector2(40, 40)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
 size = Vector3(27.4395, 0.205322, 30.29)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.36, 0.31446, 0.2412, 1)
-albedo_texture = ExtResource("1_ig7tw")
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_272bh"]
-size = Vector3(8.14, 0.175, 0.11)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5vw27"]
-size = Vector3(0.805, 0.235, 1.665)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
 diffuse_mode = 3
@@ -109,6 +97,7 @@ one_shot = true
 autostart = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1.00015, 0, 0, 0, 1.00015, 0, 0, 0, 1.00015, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h2yge")
 
 [node name="ConveyorBelt" parent="NavigationRegion3D" instance=ExtResource("2_0xm2m")]
@@ -136,30 +125,6 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 [node name="Hud" parent="." instance=ExtResource("5_lquwl")]
 visible = false
 
-[node name="WasherSign" type="Node3D" parent="."]
-transform = Transform3D(0.875389, 0, -0.48342, 0, 1, 0, 0.48342, 0, 0.875389, -2.75879, -0.817739, -0.660983)
-visible = false
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="WasherSign"]
-transform = Transform3D(0.0356361, 0.589718, 0.806822, 0.999026, -4.37114e-08, -0.0441254, -0.0260215, 0.807609, -0.589143, 2.87115, -1.11038, -1.75703)
-material_override = SubResource("StandardMaterial3D_7mycd")
-mesh = SubResource("BoxMesh_272bh")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="WasherSign"]
-transform = Transform3D(-0.0176197, 0.152984, 0.988071, 0.999109, 0.0406027, 0.0115299, -0.0383545, 0.987394, -0.153563, 3.09185, 3.28176, -1.98206)
-material_override = SubResource("StandardMaterial3D_7mycd")
-mesh = SubResource("BoxMesh_5vw27")
-skeleton = NodePath("../..")
-
-[node name="Label3D" type="Label3D" parent="WasherSign"]
-transform = Transform3D(0.988352, -0.0265579, 0.14985, 0.00800454, 0.992364, 0.123082, -0.151975, -0.120449, 0.981018, 3.10425, 3.31261, -1.83389)
-texture_filter = 0
-modulate = Color(0.407392, 0.83, 0.2905, 1)
-text = "WASH DIRTY
-DISHES"
-font_size = 48
-
 [node name="Misc" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Misc"]
@@ -168,14 +133,6 @@ mesh = SubResource("PlaneMesh_kek77")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Misc"]
 transform = Transform3D(0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, 0.866025, -3.78552e-08, -8, 1.56167, -8.5189)
-mesh = SubResource("PlaneMesh_kek77")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Misc"]
-transform = Transform3D(-0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, -0.866025, 3.78552e-08, -8, 1.56167, -8.5189)
-mesh = SubResource("PlaneMesh_kek77")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Misc"]
-transform = Transform3D(-0.866025, -0.5, 2.18557e-08, 0, -4.37114e-08, -1, 0.5, -0.866025, 3.78552e-08, 8, 1.56167, -8.5189)
 mesh = SubResource("PlaneMesh_kek77")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Misc"]

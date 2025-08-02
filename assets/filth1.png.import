@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dme37w0a5ja7s"
-path.s3tc="res://.godot/imported/filth1.png-61708ec4546730075d4e7dc483398a8f.s3tc.ctex"
+path="res://.godot/imported/filth1.png-61708ec4546730075d4e7dc483398a8f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/filth1.png"
-dest_files=["res://.godot/imported/filth1.png-61708ec4546730075d4e7dc483398a8f.s3tc.ctex"]
+dest_files=["res://.godot/imported/filth1.png-61708ec4546730075d4e7dc483398a8f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
