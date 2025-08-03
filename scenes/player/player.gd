@@ -12,6 +12,13 @@ var performing_action: bool = false
 var action: String
 var _held_items: Array[Node3D] = []
 
+func show_player():
+	show()
+	%WalkParticles.emitting = true
+	await get_tree().create_timer(0.1)
+	%WalkParticles.emitting = false
+	
+
 func _ready() -> void:
 	pass
 

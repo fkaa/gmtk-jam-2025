@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bck3arfwa6qbj"]
+[gd_scene load_steps=23 format=3 uid="uid://bck3arfwa6qbj"]
 
 [ext_resource type="Script" uid="uid://bu70mjtwa06ye" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cbmsbce03orc" path="res://assets/floor.png" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ciupyea3iqa2w" path="res://scenes/conveyor_belt/conveyor_belt.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bhfqsqvm64uug" path="res://shake.gd" id="2_dg77c"]
+[ext_resource type="PackedScene" uid="uid://dj0wnx353ppqo" path="res://menu_sign.tscn" id="2_w48qg"]
 [ext_resource type="PackedScene" uid="uid://b1rn0msbqxrki" path="res://scenes/player/player.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://byuffadntak7v" path="res://assets/floor_height.png" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ctyp3cdvy7oeo" path="res://scenes/hud/HUD.tscn" id="5_lquwl"]
@@ -66,13 +67,16 @@ uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kek77"]
 material = SubResource("StandardMaterial3D_5vw27")
-size = Vector2(25.205, 8.61)
+size = Vector2(25.205, 25)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_1bvp3")
 
+[node name="MenuSign" parent="." instance=ExtResource("2_w48qg")]
+transform = Transform3D(0.991954, 0, 0.126597, 0, 1, 0, -0.126597, 0, 0.991954, 0, 39.4485, 0)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.777069, 0.629415, 0, -0.629415, 0.777069, 0, 12.9635, 16.8958)
+transform = Transform3D(1, 0, 0, 0, 0.987887, 0.155176, 0, -0.155176, 0.987887, 0, 6.80101, 22.4823)
 fov = 37.0
 script = ExtResource("2_dg77c")
 
@@ -93,7 +97,8 @@ light_energy = 0.62
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(0.363723, 0, -0.931507, 0, 1, 0, 0.931507, 0, 0.363723, -3.13426, -1.19209e-07, -0.316388)
+transform = Transform3D(0.363723, 0, -0.931507, 0, 1, 0, 0.931507, 0, 0.363723, -3.05846, -1.19209e-07, -0.316388)
+visible = false
 move_speed = 8.5
 
 [node name="wash_timer" type="Timer" parent="Player"]
@@ -105,9 +110,10 @@ autostart = true
 transform = Transform3D(1.00015, 0, 0, 0, 1.00015, 0, 0, 0, 1.00015, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h2yge")
 
-[node name="ConveyorBelt" parent="NavigationRegion3D" node_paths=PackedStringArray("shake_camera") instance=ExtResource("2_0xm2m")]
+[node name="ConveyorBelt" parent="NavigationRegion3D" node_paths=PackedStringArray("shake_camera", "main") instance=ExtResource("2_0xm2m")]
 transform = Transform3D(0.999999, 0.00122173, 0, -0.00122173, 0.999999, 0, 0, 0, 1, 0, 0, 0)
 shake_camera = NodePath("../../Camera3D")
+main = NodePath("../..")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032536, 0)
@@ -207,8 +213,95 @@ icon = ExtResource("12_dg77c")
 [node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/CenterContainer"]
 layout_mode = 2
 
+[node name="HelpScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer2" type="HBoxContainer" parent="HelpScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 800.0
+offset_bottom = 641.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="HelpScreen/CenterContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.158001, 0.0716785, 6.01634e-09, 0.803922)
+
+[node name="CenterContainer" type="CenterContainer" parent="HelpScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 479.0
+offset_right = 800.0
+offset_bottom = 641.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RetryButton" type="Button" parent="HelpScreen/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 63
+text = "back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpScreen/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpScreen"]
+layout_mode = 0
+offset_right = 840.0
+offset_bottom = 532.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="HelpScreen"]
+layout_mode = 0
+offset_top = 319.0
+offset_right = 840.0
+offset_bottom = 532.0
+
+[node name="Label" type="Label" parent="HelpScreen/CenterContainer3"]
+layout_mode = 2
+
+[node name="CenterContainer4" type="CenterContainer" parent="HelpScreen"]
+layout_mode = 0
+offset_right = 840.0
+offset_bottom = 532.0
+
+[node name="Label2" type="Label" parent="HelpScreen/CenterContainer4"]
+layout_mode = 2
+text = "Welcome to the dishwashing olympics!
+
+YOUR GOAL
+Score as many points as possible by washing dishes.
+Wash dishes by depositing dirty dishes in the central dishwasher.
+
+BE WARNED
+If a stack on the belt gets too high it will exceed the height limit and your game ends if it fails to
+clear the hight checkpoint.
+The belt speed will increase over time!
+
+COMBOS
+Earn bonus points by performing combos!
+Combos are performed by washing multiple of the same type of
+ dish consecutively in a stack.
+
+CONTROLS
+Left Mouse: Move player, add dishes to stack
+Right Mouse: Move player, place dishes from stack"
+
 [connection signal="timeout" from="Camera3D/ShakeTimer" to="Camera3D" method="_on_shake_timer_timeout"]
 [connection signal="broken" from="NavigationRegion3D/ConveyorBelt" to="." method="_on_conveyor_belt_broken"]
 [connection signal="score" from="NavigationRegion3D/WasherMachine" to="." method="_on_washer_machine_score"]
 [connection signal="timeout" from="DifficulityTimer" to="." method="_on_difficulity_timer_timeout"]
 [connection signal="pressed" from="EndScreen/CenterContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="HelpScreen/CenterContainer/RetryButton" to="." method="_on_close_button_pressed"]

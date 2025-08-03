@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://ciupyea3iqa2w"]
+[gd_scene load_steps=52 format=3 uid="uid://ciupyea3iqa2w"]
 
 [ext_resource type="Script" uid="uid://ckax4h7i1gxri" path="res://scenes/conveyor_belt/conveyor_belt.gd" id="1_eigut"]
 [ext_resource type="PackedScene" uid="uid://cs2rxcg3v7vf1" path="res://scenes/conveyor_belt/plate_on_belt/plate_on_belt.tscn" id="1_nrmrm"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://4d81lcrypg6y" path="res://assets/fire_animation/fire_1b_40_38.png" id="40_doce1"]
 [ext_resource type="Texture2D" uid="uid://bqwq86uf7ot7i" path="res://assets/fire_animation/fire_1b_40_39.png" id="41_bwvq8"]
 [ext_resource type="Texture2D" uid="uid://bespsbyt2onfo" path="res://assets/fire_animation/fire_1b_40_40.png" id="42_lvxfe"]
+[ext_resource type="AudioStream" uid="uid://14vver7ypuf" path="res://assets/audio/conveyor_start.mp3" id="45_vioki"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_febt2"]
 animations = [{
@@ -404,5 +405,8 @@ speed_scale = -1.0
 [node name="conveyor_belt" parent="." instance=ExtResource("4_wx4rt")]
 
 [node name="BeltSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ConveyorStartBuzzer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("45_vioki")
 
 [editable path="conveyor_belt"]

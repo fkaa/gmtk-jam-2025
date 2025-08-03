@@ -1,10 +1,48 @@
 extends Node3D
+class_name Main
 
 @onready var player: Player = $Player
 @onready var conveyor_belt: Node3D = $NavigationRegion3D/ConveyorBelt
+@onready var start_menu: MenuSign = $MenuSign
+@onready var help_screen = $HelpScreen
+@onready var camera      = $Camera3D
 
 var score: int
 var game_over: bool
+var game_paused = true
+var title_screen = true
+var show_help = false
+
+func _ready():
+	show_start_screen()
+	
+func start_game():
+	await start_menu.raise_signs()
+	# ADJUST CAMERA
+	var t = get_tree().create_tween()
+	t.set_parallel(true)
+	t.tween_property(camera, "rotation", Vector3(deg_to_rad(-39), 0, 0), 2)
+	t.tween_property(camera, "position", Vector3(0, 12.964, 16.896), 2)
+	await t.finished
+	
+	# SHOW PLAYER
+	$Player.show_player()
+	
+	game_paused = false
+	title_screen = false
+	
+	# START CONVEYOR
+	await get_tree().create_timer(1)
+	await conveyor_belt.start_up()
+	
+	
+
+func show_title_screen():
+	pass
+
+func show_start_screen():
+	start_menu.lower_signs()
+	pass
 
 func _process(delta: float) -> void:
 	var obj = get_object_over_mouse()
@@ -13,7 +51,7 @@ func _process(delta: float) -> void:
 	else:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-	if not game_over:
+	if (not game_over && not game_paused):
 		if Input.is_action_just_pressed("move"):
 			var plate = get_object_over_mouse()
 			if plate is PlateOnBelt:
@@ -27,6 +65,12 @@ func _process(delta: float) -> void:
 				player.drop_on_washing_machine(object)
 			elif object is PlateOnBelt:
 				player.drop_on_plate(object)
+	elif obj: # MENU
+		if Input.is_action_just_pressed("move"):
+			if obj.name == "start":
+				start_game()
+			elif obj.name == "help":
+				show_help_screen()
 		#if Input.is_action_just_pressed("clean"):
 			#var plate = get_object_over_mouse()
 			#if plate is PlateOnBelt:
@@ -100,3 +144,9 @@ func _on_conveyor_belt_broken() -> void:
 
 func _on_retry_button_pressed() -> void:
 	get_tree().reload_current_scene()
+
+func show_help_screen() -> void:
+	help_screen.show()
+
+func _on_close_button_pressed() -> void:
+	help_screen.hide()

@@ -26,6 +26,7 @@ signal broken
 @onready var score_label: Label3D = %ScoreLabel
 @export var shake_camera: CameraShake
 
+@export var main: Main
 @export var belt_speed: float = 0.5:
 	set(val):
 		speed_label.text = "%.2fx" % (val * 2.0)
@@ -46,6 +47,13 @@ var _all_plates: Array[PlateOnBelt]
 var receiving_plate_idx = 4;
 var belt_mat: ShaderMaterial
 var exploded = false
+var started = false
+
+func start_up():
+	$ConveyorStartBuzzer.play()
+	await $ConveyorStartBuzzer.finished
+	started = true
+	
 
 func explode():
 	if not exploded:
@@ -64,6 +72,8 @@ func _ready() -> void:
 			_all_plates.append(p as PlateOnBelt)
 
 func _process(delta: float) -> void:
+	if main.game_paused or !started:
+		return
 	var y_rotation_last = plates.rotation.y
 	plates.rotation.y += belt_speed * delta
 	belt_mat.set_shader_parameter("belt_speed", belt_speed)
