@@ -216,9 +216,11 @@ layout_mode = 2
 [node name="HelpScreen" type="Control" parent="."]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CenterContainer2" type="HBoxContainer" parent="HelpScreen"]
 layout_mode = 1
@@ -239,18 +241,20 @@ color = Color(0.158001, 0.0716785, 6.01634e-09, 0.803922)
 
 [node name="CenterContainer" type="CenterContainer" parent="HelpScreen"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 479.0
-offset_right = 800.0
-offset_bottom = 641.0
+offset_left = -162.0
+offset_top = -164.0
+offset_right = 163.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RetryButton" type="Button" parent="HelpScreen/CenterContainer"]
+[node name="BackButton" type="Button" parent="HelpScreen/CenterContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 63
 text = "back"
@@ -287,13 +291,12 @@ Wash dishes by depositing dirty dishes in the central dishwasher.
 
 BE WARNED
 If a stack on the belt gets too high it will exceed the height limit and your game ends if it fails to
-clear the hight checkpoint.
+clear the height checkpoint.
 The belt speed will increase over time!
 
 COMBOS
 Earn bonus points by performing combos!
-Combos are performed by washing multiple of the same type of
- dish consecutively in a stack.
+Combos are performed by washing multiple of the same type of dish consecutively in a stack.
 
 CONTROLS
 Left Mouse: Move player, add dishes to stack
@@ -304,4 +307,4 @@ Right Mouse: Move player, place dishes from stack"
 [connection signal="score" from="NavigationRegion3D/WasherMachine" to="." method="_on_washer_machine_score"]
 [connection signal="timeout" from="DifficulityTimer" to="." method="_on_difficulity_timer_timeout"]
 [connection signal="pressed" from="EndScreen/CenterContainer/RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="HelpScreen/CenterContainer/RetryButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="HelpScreen/CenterContainer/BackButton" to="." method="_on_close_button_pressed"]
