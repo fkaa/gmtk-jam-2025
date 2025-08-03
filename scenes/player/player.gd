@@ -99,9 +99,12 @@ func _on_navigation_finished() -> void:
 		if action == "drop":
 			if len(_held_items) > 0:
 				if target_node is WashingMachine:
-					await target_node.deposit_stack(_held_items)
-					_held_items.clear()
-				else:
+					var not_taken = target_node.deposit_stack(_held_items)
+					var remove_from_idx = len(not_taken)
+					
+					for i in range(remove_from_idx, len(_held_items)):
+						_held_items.pop_back()
+				elif target_node is PlateOnBelt:
 					await target_node.add_item(_held_items.pop_back())
 		if action == "clean":
 			if ($wash_timer.time_left == 0):

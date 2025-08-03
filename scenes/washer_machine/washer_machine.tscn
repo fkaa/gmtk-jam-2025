@@ -186,7 +186,7 @@ states/Start/position = Vector2(144, 100)
 states/wash_eat/node = SubResource("AnimationNodeAnimation_prn1a")
 states/wash_eat/position = Vector2(430, 56)
 states/wash_idle/node = SubResource("AnimationNodeAnimation_pl2q2")
-states/wash_idle/position = Vector2(309, 90)
+states/wash_idle/position = Vector2(338, 144)
 transitions = ["Start", "wash_idle", SubResource("AnimationNodeStateMachineTransition_uf63r"), "wash_idle", "wash_eat", SubResource("AnimationNodeStateMachineTransition_rdqgw"), "wash_eat", "wash_idle", SubResource("AnimationNodeStateMachineTransition_w2hmw")]
 
 [node name="WasherMachine" type="Area3D"]
